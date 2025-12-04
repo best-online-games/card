@@ -575,6 +575,7 @@ namespace $.$$ {
 			animationDuration: '1s',
 			animationDelay: '0.6s',
 			animationFillMode: 'both',
+			justifyContent: 'center',
 		},
 
 		Footer_text: {
