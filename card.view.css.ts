@@ -156,6 +156,9 @@ namespace $.$$ {
 
 		// Header
 		Header: {
+			flex: {
+				direction: 'column',
+			},
 			textAlign: 'center',
 			margin: {
 				bottom: '2.5rem',
