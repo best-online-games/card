@@ -3655,6 +3655,17 @@ declare namespace $ {
 
 declare namespace $ {
 
+	export class $bog_card_tag extends $mol_text {
+	}
+	
+}
+
+//# sourceMappingURL=tag.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
 	export class $bog_card_icon_telegram extends $mol_icon {
 		path( ): string
 	}
@@ -3739,30 +3750,30 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_text__text_bog_card_7 = $mol_type_enforce<
+	type $bog_card_tag__text_bog_card_7 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $bog_card_tag['text'] >
 	>
-	type $mol_text__text_bog_card_8 = $mol_type_enforce<
+	type $bog_card_tag__text_bog_card_8 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $bog_card_tag['text'] >
 	>
-	type $mol_text__text_bog_card_9 = $mol_type_enforce<
+	type $bog_card_tag__text_bog_card_9 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $bog_card_tag['text'] >
 	>
-	type $mol_text__text_bog_card_10 = $mol_type_enforce<
+	type $bog_card_tag__text_bog_card_10 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $bog_card_tag['text'] >
 	>
-	type $mol_text__text_bog_card_11 = $mol_type_enforce<
+	type $bog_card_tag__text_bog_card_11 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $bog_card_tag['text'] >
 	>
 	type $mol_view__sub_bog_card_12 = $mol_type_enforce<
 		readonly(any)[]
@@ -3904,11 +3915,11 @@ declare namespace $ {
 		Title( ): $mol_text
 		Subtitle( ): $mol_text
 		Header( ): $mol_view
-		Service_tag1( ): $mol_text
-		Service_tag2( ): $mol_text
-		Service_tag3( ): $mol_text
-		Service_tag4( ): $mol_text
-		Service_tag5( ): $mol_text
+		Service_tag1( ): $bog_card_tag
+		Service_tag2( ): $bog_card_tag
+		Service_tag3( ): $bog_card_tag
+		Service_tag4( ): $bog_card_tag
+		Service_tag5( ): $bog_card_tag
 		Services( ): $mol_view
 		Divider( ): $mol_view
 		Contacts_title( ): $mol_text

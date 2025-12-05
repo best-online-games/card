@@ -9647,6 +9647,47 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$bog_card_tag) = class $bog_card_tag extends ($.$mol_text) {};
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_card_tag, {
+            padding: {
+                top: '0.5rem',
+                bottom: '0.5rem',
+                left: '1rem',
+                right: '1rem',
+            },
+            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            borderColor: 'rgba(99, 102, 241, 0.2)',
+            borderRadius: '100px',
+            font: {
+                size: '0.85rem',
+            },
+            color: '#94a3b8',
+            transition: 'all 0.3s',
+            cursor: 'default',
+            ':hover': {
+                backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                borderColor: '#6366f1',
+                color: '#f8fafc',
+                transform: 'translateY(-2px)',
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$bog_card_icon_telegram) = class $bog_card_icon_telegram extends ($.$mol_icon) {
 		path(){
 			return "M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z";
@@ -9806,27 +9847,27 @@ var $;
 			return obj;
 		}
 		Service_tag1(){
-			const obj = new this.$.$mol_text();
+			const obj = new this.$.$bog_card_tag();
 			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Service_tag1_text")));
 			return obj;
 		}
 		Service_tag2(){
-			const obj = new this.$.$mol_text();
+			const obj = new this.$.$bog_card_tag();
 			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Service_tag2_text")));
 			return obj;
 		}
 		Service_tag3(){
-			const obj = new this.$.$mol_text();
+			const obj = new this.$.$bog_card_tag();
 			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Service_tag3_text")));
 			return obj;
 		}
 		Service_tag4(){
-			const obj = new this.$.$mol_text();
+			const obj = new this.$.$bog_card_tag();
 			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Service_tag4_text")));
 			return obj;
 		}
 		Service_tag5(){
-			const obj = new this.$.$mol_text();
+			const obj = new this.$.$bog_card_tag();
 			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Service_tag5_text")));
 			return obj;
 		}
@@ -10303,131 +10344,6 @@ var $;
                 animationDuration: '1s',
                 animationDelay: '0.2s',
                 animationFillMode: 'both',
-            },
-            Service_tag1: {
-                padding: {
-                    top: '0.5rem',
-                    bottom: '0.5rem',
-                    left: '1rem',
-                    right: '1rem',
-                },
-                backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                borderWidth: '1px',
-                borderStyle: 'solid',
-                borderColor: 'rgba(99, 102, 241, 0.2)',
-                borderRadius: '100px',
-                font: {
-                    size: '0.85rem',
-                },
-                color: '#94a3b8',
-                transition: 'all 0.3s',
-                cursor: 'default',
-                ':hover': {
-                    backgroundColor: 'rgba(99, 102, 241, 0.2)',
-                    borderColor: '#6366f1',
-                    color: '#f8fafc',
-                    transform: 'translateY(-2px)',
-                },
-            },
-            Service_tag2: {
-                padding: {
-                    top: '0.5rem',
-                    bottom: '0.5rem',
-                    left: '1rem',
-                    right: '1rem',
-                },
-                backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                borderWidth: '1px',
-                borderStyle: 'solid',
-                borderColor: 'rgba(99, 102, 241, 0.2)',
-                borderRadius: '100px',
-                font: {
-                    size: '0.85rem',
-                },
-                color: '#94a3b8',
-                transition: 'all 0.3s',
-                cursor: 'default',
-                ':hover': {
-                    backgroundColor: 'rgba(99, 102, 241, 0.2)',
-                    borderColor: '#6366f1',
-                    color: '#f8fafc',
-                    transform: 'translateY(-2px)',
-                },
-            },
-            Service_tag3: {
-                padding: {
-                    top: '0.5rem',
-                    bottom: '0.5rem',
-                    left: '1rem',
-                    right: '1rem',
-                },
-                backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                borderWidth: '1px',
-                borderStyle: 'solid',
-                borderColor: 'rgba(99, 102, 241, 0.2)',
-                borderRadius: '100px',
-                font: {
-                    size: '0.85rem',
-                },
-                color: '#94a3b8',
-                transition: 'all 0.3s',
-                cursor: 'default',
-                ':hover': {
-                    backgroundColor: 'rgba(99, 102, 241, 0.2)',
-                    borderColor: '#6366f1',
-                    color: '#f8fafc',
-                    transform: 'translateY(-2px)',
-                },
-            },
-            Service_tag4: {
-                padding: {
-                    top: '0.5rem',
-                    bottom: '0.5rem',
-                    left: '1rem',
-                    right: '1rem',
-                },
-                backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                borderWidth: '1px',
-                borderStyle: 'solid',
-                borderColor: 'rgba(99, 102, 241, 0.2)',
-                borderRadius: '100px',
-                font: {
-                    size: '0.85rem',
-                },
-                color: '#94a3b8',
-                transition: 'all 0.3s',
-                cursor: 'default',
-                ':hover': {
-                    backgroundColor: 'rgba(99, 102, 241, 0.2)',
-                    borderColor: '#6366f1',
-                    color: '#f8fafc',
-                    transform: 'translateY(-2px)',
-                },
-            },
-            Service_tag5: {
-                padding: {
-                    top: '0.5rem',
-                    bottom: '0.5rem',
-                    left: '1rem',
-                    right: '1rem',
-                },
-                backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                borderWidth: '1px',
-                borderStyle: 'solid',
-                borderColor: 'rgba(99, 102, 241, 0.2)',
-                borderRadius: '100px',
-                font: {
-                    size: '0.85rem',
-                },
-                color: '#94a3b8',
-                transition: 'all 0.3s',
-                cursor: 'default',
-                ':hover': {
-                    backgroundColor: 'rgba(99, 102, 241, 0.2)',
-                    borderColor: '#6366f1',
-                    color: '#f8fafc',
-                    transform: 'translateY(-2px)',
-                },
             },
             Divider: {
                 height: '1px',
