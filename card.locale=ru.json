@@ -10,7 +10,7 @@
 	"$bog_card_Contacts_title_text": "Свяжитесь с нами",
 	"$bog_card_Contact_erik_name": "Эрик",
 	"$bog_card_Contact_kirill_name": "Кирилл",
-	"$bog_card_Footer_text_before_text": "Код с",
-	"$bog_card_Footer_heart_text": "♥",
-	"$bog_card_Footer_text_after_text": "и кофе"
+	"$bog_card_Footer_start": "Код с",
+	"$bog_card_Footer_center": "♥",
+	"$bog_card_Footer_end": "и кофе"
 }

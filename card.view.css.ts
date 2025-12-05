@@ -91,46 +91,6 @@ namespace $.$$ {
 			animationDelay: '0.4s',
 			animationFillMode: 'both',
 		},
-
-		// Footer
-		Footer: {
-			margin: {
-				top: '2rem',
-			},
-			textAlign: 'center',
-			animationName: 'fadeInUp',
-			animationDuration: '1s',
-			animationDelay: '0.6s',
-			animationFillMode: 'both',
-			justifyContent: 'center',
-		},
-
-		Footer_text: {
-			font: {
-				family: 'monospace',
-				size: '0.75rem',
-			},
-			color: '#64748b',
-			letterSpacing: '0.1em',
-			display: 'flex',
-			flexDirection: 'row',
-			justifyContent: 'center',
-			alignItems: 'center',
-			gap: '0.25rem',
-		},
-
-		Footer_text_before: {
-			display: 'inline',
-		},
-
-		Footer_heart: {
-			color: '#ec4899',
-			display: 'inline',
-		},
-
-		Footer_text_after: {
-			display: 'inline',
-		},
 	})
 
 	// CSS animations

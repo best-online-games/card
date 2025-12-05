@@ -1,0 +1,4 @@
+$bog_card_footer $mol_view sub /
+	<= Start $mol_paragraph title <= start \
+	<= Center $mol_paragraph title <= center \
+	<= End $mol_paragraph title <= end \
