@@ -10170,24 +10170,24 @@ var $;
 			return "";
 		}
 		Start(){
-			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ((this.start()));
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.start())]);
 			return obj;
 		}
 		center(){
 			return "";
 		}
 		Center(){
-			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ((this.center()));
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.center())]);
 			return obj;
 		}
 		end(){
 			return "";
 		}
 		End(){
-			const obj = new this.$.$mol_paragraph();
-			(obj.title) = () => ((this.end()));
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.end())]);
 			return obj;
 		}
 		sub(){

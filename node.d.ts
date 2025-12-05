@@ -3852,28 +3852,28 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $mol_paragraph__title_bog_card_footer_1 = $mol_type_enforce<
-		ReturnType< $bog_card_footer['start'] >
+	type $mol_view__sub_bog_card_footer_1 = $mol_type_enforce<
+		readonly(any)[]
 		,
-		ReturnType< $mol_paragraph['title'] >
+		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_paragraph__title_bog_card_footer_2 = $mol_type_enforce<
-		ReturnType< $bog_card_footer['center'] >
+	type $mol_view__sub_bog_card_footer_2 = $mol_type_enforce<
+		readonly(any)[]
 		,
-		ReturnType< $mol_paragraph['title'] >
+		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_paragraph__title_bog_card_footer_3 = $mol_type_enforce<
-		ReturnType< $bog_card_footer['end'] >
+	type $mol_view__sub_bog_card_footer_3 = $mol_type_enforce<
+		readonly(any)[]
 		,
-		ReturnType< $mol_paragraph['title'] >
+		ReturnType< $mol_view['sub'] >
 	>
 	export class $bog_card_footer extends $mol_view {
 		start( ): string
-		Start( ): $mol_paragraph
+		Start( ): $mol_view
 		center( ): string
-		Center( ): $mol_paragraph
+		Center( ): $mol_view
 		end( ): string
-		End( ): $mol_paragraph
+		End( ): $mol_view
 		sub( ): readonly(any)[]
 	}
 	

@@ -583,9 +583,9 @@ $bog_card_contact $mol_link
 		<= Contact_arrow $bog_card_icon_arrow
 
 $bog_card_footer $mol_view sub /
-	<= Start $mol_paragraph title <= start \
-	<= Center $mol_paragraph title <= center \
-	<= End $mol_paragraph title <= end \
+	<= Start $mol_view sub / <= start \
+	<= Center $mol_view sub / <= center \
+	<= End $mol_view sub / <= end \
 
 $bog_card $mol_page
 	title @ \Web-development
