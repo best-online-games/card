@@ -9476,10 +9476,6 @@ var $;
 			const obj = new this.$.$bog_theme_auto();
 			return obj;
 		}
-		Grid_overlay(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
 		Particle1(){
 			const obj = new this.$.$mol_view();
 			return obj;
@@ -9691,15 +9687,10 @@ var $;
 			return null;
 		}
 		body(){
-			return [
-				(this.Grid_overlay()), 
-				(this.Particles()), 
-				(this.Card())
-			];
+			return [(this.Particles()), (this.Card())];
 		}
 	};
 	($mol_mem(($.$bog_card.prototype), "Theme"));
-	($mol_mem(($.$bog_card.prototype), "Grid_overlay"));
 	($mol_mem(($.$bog_card.prototype), "Particle1"));
 	($mol_mem(($.$bog_card.prototype), "Particle2"));
 	($mol_mem(($.$bog_card.prototype), "Particle3"));
@@ -9901,11 +9892,6 @@ var $;
             position: 'relative',
             padding: '1rem',
             margin: 0,
-            Grid_overlay: {
-                position: 'fixed',
-                inset: '0',
-                opacity: 0.3,
-            },
             Particles: {
                 position: 'fixed',
                 inset: '0',

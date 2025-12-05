@@ -3849,7 +3849,6 @@ declare namespace $ {
 	>
 	export class $bog_card extends $mol_page {
 		Theme( ): $bog_theme_auto
-		Grid_overlay( ): $mol_view
 		Particle1( ): $mol_view
 		Particle2( ): $mol_view
 		Particle3( ): $mol_view
