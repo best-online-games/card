@@ -14,14 +14,7 @@ namespace $.$$ {
 		position: 'relative',
 		padding: '1rem',
 		margin: 0,
-
-		// Grid overlay
-		Grid_overlay: {
-			position: 'fixed',
-			inset: '0',
-			opacity: 0.3,
-		},
-
+		
 		// Particles
 		Particles: {
 			position: 'fixed',

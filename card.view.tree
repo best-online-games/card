@@ -6,7 +6,6 @@ $bog_card $mol_page
 	minimal_height 0
 	Head null
 	body /
-		<= Grid_overlay $mol_view
 		<= Particles $mol_view
 			sub /
 				<= Particle1 $mol_view
