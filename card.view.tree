@@ -1,5 +1,5 @@
 $bog_card $mol_page
-	title @ \
+	title @ \Web-development
 	plugins /
 		<= Theme $bog_theme_auto
 	minimal_width 0
@@ -19,45 +19,40 @@ $bog_card $mol_page
 				<= Particle9 $mol_view
 				<= Particle10 $mol_view
 				<= Particle11 $mol_view
-		<= Card $mol_view
-			sub /
-				<= Header $mol_view
-					sub /
-						<= Logo $mol_view
-							sub /
-								<= Logo_text $mol_text
-									text \</>
-						<= Title $mol_text
-							text @ \Web Development
-						<= Subtitle $mol_text
-							text @ \Creating Digital Solutions
-				<= Services $mol_view
-					sub /
-						<= Service_tag1 $bog_card_tag text @ \Web Applications
-						<= Service_tag2 $bog_card_tag text @ \SPA / PWA
-						<= Service_tag3 $bog_card_tag text @ \API Development
-						<= Service_tag4 $bog_card_tag text @ \UI/UX Design
-						<= Service_tag5 $bog_card_tag text @ \Fullstack
-				<= Divider $mol_view
-				<= Contacts_title $mol_text
-					text @ \Contact Us
-				<= Contacts $mol_list
-					rows /
-						<= Contact_erik $bog_card_contact
-							uri \https://t.me/ukmn9i5
-							name @ \Erik
-							username \@ukmn9i5
-						<= Contact_kirill $bog_card_contact
-							uri \https://t.me/dev_cmyser
-							name @ \Kirill
-							username \@dev_cmyser
-				<= Footer $mol_view
-					sub /
-						<= Footer_text $mol_view
-							sub /
-								<= Footer_text_before $mol_text
-									text @ \Code with 
-								<= Footer_heart $mol_text
-									text \♥
-								<= Footer_text_after $mol_text
-									text @ \ and coffee
+		<= Card $mol_view sub /
+			<= Header $mol_view
+				sub /
+					<= Logo $mol_view
+						sub /
+							<= Logo_text $mol_text
+								text \</>
+					<= Title $mol_text
+						text @ \Web Development
+					<= Subtitle $mol_text
+						text @ \Creating Digital Solutions
+			<= Services $mol_view
+				sub /
+					<= Service_tag1 $bog_card_tag text @ \Web Applications
+					<= Service_tag2 $bog_card_tag text @ \SPA / PWA
+					<= Service_tag3 $bog_card_tag text @ \API Development
+					<= Service_tag4 $bog_card_tag text @ \UI/UX Design
+					<= Service_tag5 $bog_card_tag text @ \Fullstack
+			<= Divider $mol_view
+			<= Contacts_title $mol_text text @ \Contact Us
+			<= Contacts $mol_list
+				rows /
+					<= Contact_erik $bog_card_contact
+						uri \https://t.me/ukmn9i5
+						name @ \Erik
+						username \@ukmn9i5
+					<= Contact_kirill $bog_card_contact
+						uri \https://t.me/dev_cmyser
+						name @ \Kirill
+						username \@dev_cmyser
+			<= Footer $mol_view
+				sub /
+					<= Footer_text $mol_view
+						sub /
+							<= Footer_text_before $mol_text text @ \Code with
+							<= Footer_heart $mol_text text \♥
+							<= Footer_text_after $mol_text text @ \ and coffee

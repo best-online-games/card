@@ -14,7 +14,7 @@ namespace $.$$ {
 		position: 'relative',
 		padding: '1rem',
 		margin: 0,
-		
+
 		// Particles
 		Particles: {
 			position: 'fixed',
