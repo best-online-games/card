@@ -17,8 +17,10 @@
   "keywords": [
     "$bog_card",
     "$bog",
-    "$mol_page",
+    "$mol_offline_install",
+    "$mol_offline",
     "$mol",
+    "$mol_page",
     "$mol_view_view",
     "$mol_view",
     "$mol_style_attach",
@@ -150,6 +152,7 @@
     "$mol_type_enforce",
     "$bog_theme_auto",
     "$bog_theme",
+    "$bog_card_particles",
     "$mol_text_text",
     "$mol_text",
     "$mol_list",
@@ -211,9 +214,7 @@
     "$mol_expander",
     "$bog_card_tag",
     "$bog_card_contact",
-    "$bog_card_icon",
-    "$mol_offline_install",
-    "$mol_offline"
+    "$bog_card_icon"
   ],
   "dependencies": {
     "internal": "*",

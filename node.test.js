@@ -23,6 +23,26 @@ $.$$ = $
 "use strict";
 var $;
 (function ($) {
+    function $mol_offline() { }
+    $.$mol_offline = $mol_offline;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    try {
+        $mol_offline();
+    }
+    catch (error) {
+        console.error(error);
+    }
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
 })($ || ($ = {}));
 
 ;
@@ -5446,6 +5466,123 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$bog_card_particles) = class $bog_card_particles extends ($.$mol_view) {
+		Particle1(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		Particle2(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		Particle3(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		Particle4(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		Particle5(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		Particle6(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		sub(){
+			return [
+				(this.Particle1()), 
+				(this.Particle2()), 
+				(this.Particle3()), 
+				(this.Particle4()), 
+				(this.Particle5()), 
+				(this.Particle6())
+			];
+		}
+	};
+	($mol_mem(($.$bog_card_particles.prototype), "Particle1"));
+	($mol_mem(($.$bog_card_particles.prototype), "Particle2"));
+	($mol_mem(($.$bog_card_particles.prototype), "Particle3"));
+	($mol_mem(($.$bog_card_particles.prototype), "Particle4"));
+	($mol_mem(($.$bog_card_particles.prototype), "Particle5"));
+	($mol_mem(($.$bog_card_particles.prototype), "Particle6"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const BOG_CARD_PARTICLE = {
+            position: 'absolute',
+            width: '4px',
+            height: '4px',
+            borderRadius: '50%',
+            opacity: 0.4,
+            animationName: 'float',
+            animationDuration: '15s',
+            animationIterationCount: 'infinite',
+        };
+        $mol_style_define($bog_card_particles, {
+            position: 'fixed',
+            inset: '0',
+            pointerEvents: 'none',
+            Particle1: {
+                ...BOG_CARD_PARTICLE,
+                left: '10%',
+                top: '20%',
+                backgroundColor: '#6366f1',
+            },
+            Particle2: {
+                ...BOG_CARD_PARTICLE,
+                left: '20%',
+                top: '80%',
+                backgroundColor: '#8b5cf6',
+                animationDelay: '-2s',
+            },
+            Particle3: {
+                ...BOG_CARD_PARTICLE,
+                left: '60%',
+                top: '10%',
+                backgroundColor: '#6366f1',
+                animationDelay: '-4s',
+            },
+            Particle4: {
+                ...BOG_CARD_PARTICLE,
+                left: '80%',
+                top: '70%',
+                backgroundColor: '#ec4899',
+                animationDelay: '-6s',
+            },
+            Particle5: {
+                ...BOG_CARD_PARTICLE,
+                left: '40%',
+                top: '50%',
+                backgroundColor: '#6366f1',
+                animationDelay: '-8s',
+            },
+            Particle6: {
+                ...BOG_CARD_PARTICLE,
+                left: '90%',
+                top: '30%',
+                backgroundColor: '#8b5cf6',
+                animationDelay: '-10s',
+            },
+        });
+        $mol_style_attach('bog_card_particles_animations', `@keyframes float {
+			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
+		}`);
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$mol_list) = class $mol_list extends ($.$mol_view) {
 		gap_before(){
 			return 0;
@@ -9835,109 +9972,13 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$mol_text_list) = class $mol_text_list extends ($.$mol_text) {
-		type(){
-			return "";
-		}
-		auto_scroll(){
-			return null;
-		}
-		attr(){
-			return {...(super.attr()), "mol_text_list_type": (this.type())};
-		}
-		Paragraph(id){
-			const obj = new this.$.$mol_text_list_item();
-			(obj.index) = () => ((this.item_index(id)));
-			(obj.sub) = () => ((this.block_content(id)));
-			return obj;
-		}
-	};
-	($mol_mem_key(($.$mol_text_list.prototype), "Paragraph"));
-	($.$mol_text_list_item) = class $mol_text_list_item extends ($.$mol_paragraph) {
-		index(){
-			return 0;
-		}
-		attr(){
-			return {...(super.attr()), "mol_text_list_item_index": (this.index())};
-		}
-	};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/text/list/list.view.css", "[mol_text_list] {\r\n\tpadding-left: 1.75rem;\r\n}\r\n\r\n[mol_text_list_item] {\r\n\tcontain: none;\r\n\tdisplay: list-item;\r\n}\r\n\r\n[mol_text_list_item]::before {\r\n\tcontent: attr( mol_text_list_item_index ) \".\";\r\n\twidth: 1.25rem;\r\n\tdisplay: inline-block;\r\n\tposition: absolute;\r\n\tmargin-left: -1.75rem;\r\n\ttext-align: end;\r\n}\r\n\r\n[mol_text_list_type=\"-\"] > [mol_text_list_item]::before,\r\n[mol_text_list_type=\"*\"] > [mol_text_list_item]::before {\r\n\tcontent: \"•\";\r\n}\r\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
 	($.$bog_card) = class $bog_card extends ($.$mol_page) {
 		Theme(){
 			const obj = new this.$.$bog_theme_auto();
 			return obj;
 		}
-		Particle1(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle2(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle3(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle4(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle5(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle6(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle7(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle8(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle9(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle10(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle11(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
 		Particles(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([
-				(this.Particle1()), 
-				(this.Particle2()), 
-				(this.Particle3()), 
-				(this.Particle4()), 
-				(this.Particle5()), 
-				(this.Particle6()), 
-				(this.Particle7()), 
-				(this.Particle8()), 
-				(this.Particle9()), 
-				(this.Particle10()), 
-				(this.Particle11())
-			]);
+			const obj = new this.$.$bog_card_particles();
 			return obj;
 		}
 		Logo_text(){
@@ -10094,17 +10135,6 @@ var $;
 		}
 	};
 	($mol_mem(($.$bog_card.prototype), "Theme"));
-	($mol_mem(($.$bog_card.prototype), "Particle1"));
-	($mol_mem(($.$bog_card.prototype), "Particle2"));
-	($mol_mem(($.$bog_card.prototype), "Particle3"));
-	($mol_mem(($.$bog_card.prototype), "Particle4"));
-	($mol_mem(($.$bog_card.prototype), "Particle5"));
-	($mol_mem(($.$bog_card.prototype), "Particle6"));
-	($mol_mem(($.$bog_card.prototype), "Particle7"));
-	($mol_mem(($.$bog_card.prototype), "Particle8"));
-	($mol_mem(($.$bog_card.prototype), "Particle9"));
-	($mol_mem(($.$bog_card.prototype), "Particle10"));
-	($mol_mem(($.$bog_card.prototype), "Particle11"));
 	($mol_mem(($.$bog_card.prototype), "Particles"));
 	($mol_mem(($.$bog_card.prototype), "Logo_text"));
 	($mol_mem(($.$bog_card.prototype), "Logo"));
@@ -10131,42 +10161,49 @@ var $;
 
 
 ;
-"use strict";
-var $;
-(function ($) {
-    function $mol_offline() { }
-    $.$mol_offline = $mol_offline;
-})($ || ($ = {}));
+	($.$mol_text_list) = class $mol_text_list extends ($.$mol_text) {
+		type(){
+			return "";
+		}
+		auto_scroll(){
+			return null;
+		}
+		attr(){
+			return {...(super.attr()), "mol_text_list_type": (this.type())};
+		}
+		Paragraph(id){
+			const obj = new this.$.$mol_text_list_item();
+			(obj.index) = () => ((this.item_index(id)));
+			(obj.sub) = () => ((this.block_content(id)));
+			return obj;
+		}
+	};
+	($mol_mem_key(($.$mol_text_list.prototype), "Paragraph"));
+	($.$mol_text_list_item) = class $mol_text_list_item extends ($.$mol_paragraph) {
+		index(){
+			return 0;
+		}
+		attr(){
+			return {...(super.attr()), "mol_text_list_item_index": (this.index())};
+		}
+	};
+
 
 ;
 "use strict";
 var $;
 (function ($) {
-    try {
-        $mol_offline();
-    }
-    catch (error) {
-        console.error(error);
-    }
+    $mol_style_attach("mol/text/list/list.view.css", "[mol_text_list] {\r\n\tpadding-left: 1.75rem;\r\n}\r\n\r\n[mol_text_list_item] {\r\n\tcontain: none;\r\n\tdisplay: list-item;\r\n}\r\n\r\n[mol_text_list_item]::before {\r\n\tcontent: attr( mol_text_list_item_index ) \".\";\r\n\twidth: 1.25rem;\r\n\tdisplay: inline-block;\r\n\tposition: absolute;\r\n\tmargin-left: -1.75rem;\r\n\ttext-align: end;\r\n}\r\n\r\n[mol_text_list_type=\"-\"] > [mol_text_list_item]::before,\r\n[mol_text_list_type=\"*\"] > [mol_text_list_item]::before {\r\n\tcontent: \"•\";\r\n}\r\n");
 })($ || ($ = {}));
+
+;
+"use strict";
 
 ;
 var $node = $node || {} ; $node[ "/bog/card/favicon.svg" ] = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CiAgPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iIzYzNjZmMSIvPgogIDxwYXRoIGQ9Ik04IDZMNSAxMkw4IDE4TTE2IDZMMTkgMTJMMTYgMThNMTQgNEwxMCAyMCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg=="
 
 ;
 "use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $bog_card extends $.$bog_card {
-        }
-        $$.$bog_card = $bog_card;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
 
 ;
 "use strict";
@@ -10189,94 +10226,6 @@ var $;
             position: 'relative',
             padding: '1rem',
             margin: 0,
-            Particles: {
-                position: 'fixed',
-                inset: '0',
-                pointerEvents: 'none',
-            },
-            Particle1: {
-                position: 'absolute',
-                left: '10%',
-                top: '20%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#6366f1',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float1',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-            },
-            Particle2: {
-                position: 'absolute',
-                left: '20%',
-                top: '80%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#8b5cf6',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float2',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-                animationDelay: '-2s',
-            },
-            Particle3: {
-                position: 'absolute',
-                left: '60%',
-                top: '10%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#6366f1',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float3',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-                animationDelay: '-4s',
-            },
-            Particle4: {
-                position: 'absolute',
-                left: '80%',
-                top: '70%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#ec4899',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float4',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-                animationDelay: '-6s',
-            },
-            Particle5: {
-                position: 'absolute',
-                left: '40%',
-                top: '50%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#6366f1',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float5',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-                animationDelay: '-8s',
-            },
-            Particle6: {
-                position: 'absolute',
-                left: '90%',
-                top: '30%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#8b5cf6',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float6',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-                animationDelay: '-10s',
-            },
             Card: {
                 flex: {
                     direction: 'column',
@@ -10439,36 +10388,6 @@ var $;
             },
         });
         $mol_style_attach('bog_card_animations', `
-		@keyframes float1 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float2 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float3 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float4 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float5 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float6 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
 		@keyframes cardEntry {
 			from {
 				opacity: 0;

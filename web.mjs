@@ -32,6 +32,70 @@ $.$$ = $
 "use strict";
 var $;
 (function ($) {
+    function $mol_offline() { }
+    $.$mol_offline = $mol_offline;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_log3_area_lazy(event) {
+        const self = this.$;
+        const stack = self.$mol_log3_stack;
+        const deep = stack.length;
+        let logged = false;
+        stack.push(() => {
+            logged = true;
+            self.$mol_log3_area.call(self, event);
+        });
+        return () => {
+            if (logged)
+                self.console.groupEnd();
+            if (stack.length > deep)
+                stack.length = deep;
+        };
+    }
+    $.$mol_log3_area_lazy = $mol_log3_area_lazy;
+    $.$mol_log3_stack = [];
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    function $mol_log3_web_make(level, color) {
+        return function $mol_log3_logger(event) {
+            const pending = this.$mol_log3_stack.pop();
+            if (pending)
+                pending();
+            let tpl = '%c';
+            const chunks = Object.entries(event);
+            for (let i = 0; i < chunks.length; ++i) {
+                tpl += (typeof chunks[i][1] === 'string') ? '%s: %s\n' : '%s: %o\n';
+            }
+            const style = `color:${color};font-weight:bolder`;
+            this.console[level](tpl.trim(), style, ...[].concat(...chunks));
+            const self = this;
+            return () => self.console.groupEnd();
+        };
+    }
+    $.$mol_log3_web_make = $mol_log3_web_make;
+    $.$mol_log3_come = $mol_log3_web_make('info', 'royalblue');
+    $.$mol_log3_done = $mol_log3_web_make('info', 'forestgreen');
+    $.$mol_log3_fail = $mol_log3_web_make('error', 'orangered');
+    $.$mol_log3_warn = $mol_log3_web_make('warn', 'goldenrod');
+    $.$mol_log3_rise = $mol_log3_web_make('log', 'magenta');
+    $.$mol_log3_area = $mol_log3_web_make('group', 'cyan');
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
 })($ || ($ = {}));
 
 ;
@@ -46,6 +110,124 @@ var $;
 var $;
 (function ($) {
     $.$mol_dom = $mol_dom_context;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    const blacklist = new Set([
+        '//cse.google.com/adsense/search/async-ads.js'
+    ]);
+    function $mol_offline_web() {
+        if (typeof window === 'undefined') {
+            self.addEventListener('install', (event) => {
+                ;
+                self.skipWaiting();
+            });
+            self.addEventListener('activate', (event) => {
+                ;
+                self.clients.claim();
+                $$.$mol_log3_done({
+                    place: '$mol_offline',
+                    message: 'Activated',
+                });
+            });
+            self.addEventListener('fetch', (event) => {
+                const request = event.request;
+                if (blacklist.has(request.url.replace(/^https?:/, ''))) {
+                    return event.respondWith(new Response(null, {
+                        status: 418,
+                        statusText: 'Blocked'
+                    }));
+                }
+                if (request.method !== 'GET')
+                    return;
+                if (!/^https?:/.test(request.url))
+                    return;
+                if (/\?/.test(request.url))
+                    return;
+                if (request.cache === 'no-store')
+                    return;
+                const fetch_data = () => fetch(new Request(request, { credentials: 'omit' })).then(response => {
+                    if (response.status !== 200)
+                        return response;
+                    event.waitUntil(caches.open('$mol_offline').then(cache => cache.put(request, response)));
+                    return response.clone();
+                });
+                const enrich = (response) => {
+                    if (!response.status)
+                        return response;
+                    const headers = new Headers(response.headers);
+                    headers.set("$mol_offline", "");
+                    headers.set("Origin-Agent-Cluster", "?1");
+                    return new Response(response.body, {
+                        status: response.status,
+                        statusText: response.statusText,
+                        headers,
+                    });
+                };
+                const fresh = request.cache === 'force-cache' ? null : fetch_data();
+                if (fresh)
+                    event.waitUntil(fresh.then(enrich));
+                event.respondWith(caches.match(request).then(cached => request.cache === 'no-cache' || request.cache === 'reload'
+                    ? (cached
+                        ? fresh
+                            .then(actual => {
+                            if (actual.status === cached.status)
+                                return actual;
+                            throw new Error(`${actual.status}${actual.statusText ? ` ${actual.statusText}` : ''}`, { cause: actual });
+                        })
+                            .catch((err) => {
+                            const cloned = cached.clone();
+                            const message = `${err.cause instanceof Response ? '' : '500 '}${err.message} $mol_offline fallback to cache`;
+                            cloned.headers.set('$mol_offline_remote_status', message);
+                            return cloned;
+                        })
+                        : fresh)
+                    : (cached || fresh || fetch_data())).then(enrich));
+            });
+            self.addEventListener('beforeinstallprompt', (event) => event.prompt());
+        }
+        else if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
+            console.warn('HTTPS or localhost is required for service workers.');
+        }
+        else if (!navigator.serviceWorker) {
+            console.warn('Service Worker is not supported.');
+        }
+        else {
+            $mol_dom.addEventListener('DOMContentLoaded', () => {
+                navigator.serviceWorker.register('web.js').then(reg => {
+                    reg.addEventListener('updatefound', () => {
+                        $$.$mol_log3_rise({
+                            place: '$mol_offline',
+                            message: 'Outdated',
+                        });
+                        const worker = reg.installing;
+                        worker.addEventListener('statechange', () => {
+                            if (worker.state !== 'activated')
+                                return;
+                            window.location.reload();
+                        });
+                    });
+                });
+            });
+        }
+    }
+    $.$mol_offline_web = $mol_offline_web;
+    $.$mol_offline = $mol_offline_web;
+})($ || ($ = {}));
+
+;
+"use strict";
+var $;
+(function ($) {
+    try {
+        $mol_offline();
+    }
+    catch (error) {
+        console.error(error);
+    }
 })($ || ($ = {}));
 
 ;
@@ -1472,62 +1654,6 @@ var $;
     function compare_primitive(left, right) {
         return Object.is(left[Symbol.toPrimitive]('default'), right[Symbol.toPrimitive]('default'));
     }
-})($ || ($ = {}));
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_log3_area_lazy(event) {
-        const self = this.$;
-        const stack = self.$mol_log3_stack;
-        const deep = stack.length;
-        let logged = false;
-        stack.push(() => {
-            logged = true;
-            self.$mol_log3_area.call(self, event);
-        });
-        return () => {
-            if (logged)
-                self.console.groupEnd();
-            if (stack.length > deep)
-                stack.length = deep;
-        };
-    }
-    $.$mol_log3_area_lazy = $mol_log3_area_lazy;
-    $.$mol_log3_stack = [];
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    function $mol_log3_web_make(level, color) {
-        return function $mol_log3_logger(event) {
-            const pending = this.$mol_log3_stack.pop();
-            if (pending)
-                pending();
-            let tpl = '%c';
-            const chunks = Object.entries(event);
-            for (let i = 0; i < chunks.length; ++i) {
-                tpl += (typeof chunks[i][1] === 'string') ? '%s: %s\n' : '%s: %o\n';
-            }
-            const style = `color:${color};font-weight:bolder`;
-            this.console[level](tpl.trim(), style, ...[].concat(...chunks));
-            const self = this;
-            return () => self.console.groupEnd();
-        };
-    }
-    $.$mol_log3_web_make = $mol_log3_web_make;
-    $.$mol_log3_come = $mol_log3_web_make('info', 'royalblue');
-    $.$mol_log3_done = $mol_log3_web_make('info', 'forestgreen');
-    $.$mol_log3_fail = $mol_log3_web_make('error', 'orangered');
-    $.$mol_log3_warn = $mol_log3_web_make('warn', 'goldenrod');
-    $.$mol_log3_rise = $mol_log3_web_make('log', 'magenta');
-    $.$mol_log3_area = $mol_log3_web_make('group', 'cyan');
 })($ || ($ = {}));
 
 ;
@@ -4243,6 +4369,123 @@ var $;
 
 ;
 "use strict";
+
+;
+	($.$bog_card_particles) = class $bog_card_particles extends ($.$mol_view) {
+		Particle1(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		Particle2(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		Particle3(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		Particle4(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		Particle5(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		Particle6(){
+			const obj = new this.$.$mol_view();
+			return obj;
+		}
+		sub(){
+			return [
+				(this.Particle1()), 
+				(this.Particle2()), 
+				(this.Particle3()), 
+				(this.Particle4()), 
+				(this.Particle5()), 
+				(this.Particle6())
+			];
+		}
+	};
+	($mol_mem(($.$bog_card_particles.prototype), "Particle1"));
+	($mol_mem(($.$bog_card_particles.prototype), "Particle2"));
+	($mol_mem(($.$bog_card_particles.prototype), "Particle3"));
+	($mol_mem(($.$bog_card_particles.prototype), "Particle4"));
+	($mol_mem(($.$bog_card_particles.prototype), "Particle5"));
+	($mol_mem(($.$bog_card_particles.prototype), "Particle6"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        const BOG_CARD_PARTICLE = {
+            position: 'absolute',
+            width: '4px',
+            height: '4px',
+            borderRadius: '50%',
+            opacity: 0.4,
+            animationName: 'float',
+            animationDuration: '15s',
+            animationIterationCount: 'infinite',
+        };
+        $mol_style_define($bog_card_particles, {
+            position: 'fixed',
+            inset: '0',
+            pointerEvents: 'none',
+            Particle1: {
+                ...BOG_CARD_PARTICLE,
+                left: '10%',
+                top: '20%',
+                backgroundColor: '#6366f1',
+            },
+            Particle2: {
+                ...BOG_CARD_PARTICLE,
+                left: '20%',
+                top: '80%',
+                backgroundColor: '#8b5cf6',
+                animationDelay: '-2s',
+            },
+            Particle3: {
+                ...BOG_CARD_PARTICLE,
+                left: '60%',
+                top: '10%',
+                backgroundColor: '#6366f1',
+                animationDelay: '-4s',
+            },
+            Particle4: {
+                ...BOG_CARD_PARTICLE,
+                left: '80%',
+                top: '70%',
+                backgroundColor: '#ec4899',
+                animationDelay: '-6s',
+            },
+            Particle5: {
+                ...BOG_CARD_PARTICLE,
+                left: '40%',
+                top: '50%',
+                backgroundColor: '#6366f1',
+                animationDelay: '-8s',
+            },
+            Particle6: {
+                ...BOG_CARD_PARTICLE,
+                left: '90%',
+                top: '30%',
+                backgroundColor: '#8b5cf6',
+                animationDelay: '-10s',
+            },
+        });
+        $mol_style_attach('bog_card_particles_animations', `@keyframes float {
+			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
+		}`);
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
 
 ;
 	($.$mol_list) = class $mol_list extends ($.$mol_view) {
@@ -9432,109 +9675,13 @@ var $;
 })($ || ($ = {}));
 
 ;
-	($.$mol_text_list) = class $mol_text_list extends ($.$mol_text) {
-		type(){
-			return "";
-		}
-		auto_scroll(){
-			return null;
-		}
-		attr(){
-			return {...(super.attr()), "mol_text_list_type": (this.type())};
-		}
-		Paragraph(id){
-			const obj = new this.$.$mol_text_list_item();
-			(obj.index) = () => ((this.item_index(id)));
-			(obj.sub) = () => ((this.block_content(id)));
-			return obj;
-		}
-	};
-	($mol_mem_key(($.$mol_text_list.prototype), "Paragraph"));
-	($.$mol_text_list_item) = class $mol_text_list_item extends ($.$mol_paragraph) {
-		index(){
-			return 0;
-		}
-		attr(){
-			return {...(super.attr()), "mol_text_list_item_index": (this.index())};
-		}
-	};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/text/list/list.view.css", "[mol_text_list] {\r\n\tpadding-left: 1.75rem;\r\n}\r\n\r\n[mol_text_list_item] {\r\n\tcontain: none;\r\n\tdisplay: list-item;\r\n}\r\n\r\n[mol_text_list_item]::before {\r\n\tcontent: attr( mol_text_list_item_index ) \".\";\r\n\twidth: 1.25rem;\r\n\tdisplay: inline-block;\r\n\tposition: absolute;\r\n\tmargin-left: -1.75rem;\r\n\ttext-align: end;\r\n}\r\n\r\n[mol_text_list_type=\"-\"] > [mol_text_list_item]::before,\r\n[mol_text_list_type=\"*\"] > [mol_text_list_item]::before {\r\n\tcontent: \"•\";\r\n}\r\n");
-})($ || ($ = {}));
-
-;
-"use strict";
-
-;
 	($.$bog_card) = class $bog_card extends ($.$mol_page) {
 		Theme(){
 			const obj = new this.$.$bog_theme_auto();
 			return obj;
 		}
-		Particle1(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle2(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle3(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle4(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle5(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle6(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle7(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle8(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle9(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle10(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
-		Particle11(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
 		Particles(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([
-				(this.Particle1()), 
-				(this.Particle2()), 
-				(this.Particle3()), 
-				(this.Particle4()), 
-				(this.Particle5()), 
-				(this.Particle6()), 
-				(this.Particle7()), 
-				(this.Particle8()), 
-				(this.Particle9()), 
-				(this.Particle10()), 
-				(this.Particle11())
-			]);
+			const obj = new this.$.$bog_card_particles();
 			return obj;
 		}
 		Logo_text(){
@@ -9691,17 +9838,6 @@ var $;
 		}
 	};
 	($mol_mem(($.$bog_card.prototype), "Theme"));
-	($mol_mem(($.$bog_card.prototype), "Particle1"));
-	($mol_mem(($.$bog_card.prototype), "Particle2"));
-	($mol_mem(($.$bog_card.prototype), "Particle3"));
-	($mol_mem(($.$bog_card.prototype), "Particle4"));
-	($mol_mem(($.$bog_card.prototype), "Particle5"));
-	($mol_mem(($.$bog_card.prototype), "Particle6"));
-	($mol_mem(($.$bog_card.prototype), "Particle7"));
-	($mol_mem(($.$bog_card.prototype), "Particle8"));
-	($mol_mem(($.$bog_card.prototype), "Particle9"));
-	($mol_mem(($.$bog_card.prototype), "Particle10"));
-	($mol_mem(($.$bog_card.prototype), "Particle11"));
 	($mol_mem(($.$bog_card.prototype), "Particles"));
 	($mol_mem(($.$bog_card.prototype), "Logo_text"));
 	($mol_mem(($.$bog_card.prototype), "Logo"));
@@ -9728,148 +9864,49 @@ var $;
 
 
 ;
-"use strict";
-var $;
-(function ($) {
-    function $mol_offline() { }
-    $.$mol_offline = $mol_offline;
-})($ || ($ = {}));
+	($.$mol_text_list) = class $mol_text_list extends ($.$mol_text) {
+		type(){
+			return "";
+		}
+		auto_scroll(){
+			return null;
+		}
+		attr(){
+			return {...(super.attr()), "mol_text_list_type": (this.type())};
+		}
+		Paragraph(id){
+			const obj = new this.$.$mol_text_list_item();
+			(obj.index) = () => ((this.item_index(id)));
+			(obj.sub) = () => ((this.block_content(id)));
+			return obj;
+		}
+	};
+	($mol_mem_key(($.$mol_text_list.prototype), "Paragraph"));
+	($.$mol_text_list_item) = class $mol_text_list_item extends ($.$mol_paragraph) {
+		index(){
+			return 0;
+		}
+		attr(){
+			return {...(super.attr()), "mol_text_list_item_index": (this.index())};
+		}
+	};
+
 
 ;
 "use strict";
 var $;
 (function ($) {
-    const blacklist = new Set([
-        '//cse.google.com/adsense/search/async-ads.js'
-    ]);
-    function $mol_offline_web() {
-        if (typeof window === 'undefined') {
-            self.addEventListener('install', (event) => {
-                ;
-                self.skipWaiting();
-            });
-            self.addEventListener('activate', (event) => {
-                ;
-                self.clients.claim();
-                $$.$mol_log3_done({
-                    place: '$mol_offline',
-                    message: 'Activated',
-                });
-            });
-            self.addEventListener('fetch', (event) => {
-                const request = event.request;
-                if (blacklist.has(request.url.replace(/^https?:/, ''))) {
-                    return event.respondWith(new Response(null, {
-                        status: 418,
-                        statusText: 'Blocked'
-                    }));
-                }
-                if (request.method !== 'GET')
-                    return;
-                if (!/^https?:/.test(request.url))
-                    return;
-                if (/\?/.test(request.url))
-                    return;
-                if (request.cache === 'no-store')
-                    return;
-                const fetch_data = () => fetch(new Request(request, { credentials: 'omit' })).then(response => {
-                    if (response.status !== 200)
-                        return response;
-                    event.waitUntil(caches.open('$mol_offline').then(cache => cache.put(request, response)));
-                    return response.clone();
-                });
-                const enrich = (response) => {
-                    if (!response.status)
-                        return response;
-                    const headers = new Headers(response.headers);
-                    headers.set("$mol_offline", "");
-                    headers.set("Origin-Agent-Cluster", "?1");
-                    return new Response(response.body, {
-                        status: response.status,
-                        statusText: response.statusText,
-                        headers,
-                    });
-                };
-                const fresh = request.cache === 'force-cache' ? null : fetch_data();
-                if (fresh)
-                    event.waitUntil(fresh.then(enrich));
-                event.respondWith(caches.match(request).then(cached => request.cache === 'no-cache' || request.cache === 'reload'
-                    ? (cached
-                        ? fresh
-                            .then(actual => {
-                            if (actual.status === cached.status)
-                                return actual;
-                            throw new Error(`${actual.status}${actual.statusText ? ` ${actual.statusText}` : ''}`, { cause: actual });
-                        })
-                            .catch((err) => {
-                            const cloned = cached.clone();
-                            const message = `${err.cause instanceof Response ? '' : '500 '}${err.message} $mol_offline fallback to cache`;
-                            cloned.headers.set('$mol_offline_remote_status', message);
-                            return cloned;
-                        })
-                        : fresh)
-                    : (cached || fresh || fetch_data())).then(enrich));
-            });
-            self.addEventListener('beforeinstallprompt', (event) => event.prompt());
-        }
-        else if (location.protocol !== 'https:' && location.hostname !== 'localhost') {
-            console.warn('HTTPS or localhost is required for service workers.');
-        }
-        else if (!navigator.serviceWorker) {
-            console.warn('Service Worker is not supported.');
-        }
-        else {
-            $mol_dom.addEventListener('DOMContentLoaded', () => {
-                navigator.serviceWorker.register('web.js').then(reg => {
-                    reg.addEventListener('updatefound', () => {
-                        $$.$mol_log3_rise({
-                            place: '$mol_offline',
-                            message: 'Outdated',
-                        });
-                        const worker = reg.installing;
-                        worker.addEventListener('statechange', () => {
-                            if (worker.state !== 'activated')
-                                return;
-                            window.location.reload();
-                        });
-                    });
-                });
-            });
-        }
-    }
-    $.$mol_offline_web = $mol_offline_web;
-    $.$mol_offline = $mol_offline_web;
+    $mol_style_attach("mol/text/list/list.view.css", "[mol_text_list] {\r\n\tpadding-left: 1.75rem;\r\n}\r\n\r\n[mol_text_list_item] {\r\n\tcontain: none;\r\n\tdisplay: list-item;\r\n}\r\n\r\n[mol_text_list_item]::before {\r\n\tcontent: attr( mol_text_list_item_index ) \".\";\r\n\twidth: 1.25rem;\r\n\tdisplay: inline-block;\r\n\tposition: absolute;\r\n\tmargin-left: -1.75rem;\r\n\ttext-align: end;\r\n}\r\n\r\n[mol_text_list_type=\"-\"] > [mol_text_list_item]::before,\r\n[mol_text_list_type=\"*\"] > [mol_text_list_item]::before {\r\n\tcontent: \"•\";\r\n}\r\n");
 })($ || ($ = {}));
 
 ;
 "use strict";
-var $;
-(function ($) {
-    try {
-        $mol_offline();
-    }
-    catch (error) {
-        console.error(error);
-    }
-})($ || ($ = {}));
 
 ;
 var $node = $node || {} ; $node[ "/bog/card/favicon.svg" ] = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CiAgPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iIzYzNjZmMSIvPgogIDxwYXRoIGQ9Ik04IDZMNSAxMkw4IDE4TTE2IDZMMTkgMTJMMTYgMThNMTQgNEwxMCAyMCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg=="
 
 ;
 "use strict";
-
-;
-"use strict";
-var $;
-(function ($) {
-    var $$;
-    (function ($$) {
-        class $bog_card extends $.$bog_card {
-        }
-        $$.$bog_card = $bog_card;
-    })($$ = $.$$ || ($.$$ = {}));
-})($ || ($ = {}));
 
 ;
 "use strict";
@@ -9892,94 +9929,6 @@ var $;
             position: 'relative',
             padding: '1rem',
             margin: 0,
-            Particles: {
-                position: 'fixed',
-                inset: '0',
-                pointerEvents: 'none',
-            },
-            Particle1: {
-                position: 'absolute',
-                left: '10%',
-                top: '20%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#6366f1',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float1',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-            },
-            Particle2: {
-                position: 'absolute',
-                left: '20%',
-                top: '80%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#8b5cf6',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float2',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-                animationDelay: '-2s',
-            },
-            Particle3: {
-                position: 'absolute',
-                left: '60%',
-                top: '10%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#6366f1',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float3',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-                animationDelay: '-4s',
-            },
-            Particle4: {
-                position: 'absolute',
-                left: '80%',
-                top: '70%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#ec4899',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float4',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-                animationDelay: '-6s',
-            },
-            Particle5: {
-                position: 'absolute',
-                left: '40%',
-                top: '50%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#6366f1',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float5',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-                animationDelay: '-8s',
-            },
-            Particle6: {
-                position: 'absolute',
-                left: '90%',
-                top: '30%',
-                width: '4px',
-                height: '4px',
-                backgroundColor: '#8b5cf6',
-                borderRadius: '50%',
-                opacity: 0.4,
-                animationName: 'float6',
-                animationDuration: '15s',
-                animationIterationCount: 'infinite',
-                animationDelay: '-10s',
-            },
             Card: {
                 flex: {
                     direction: 'column',
@@ -10142,36 +10091,6 @@ var $;
             },
         });
         $mol_style_attach('bog_card_animations', `
-		@keyframes float1 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float2 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float3 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float4 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float5 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float6 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
 		@keyframes cardEntry {
 			from {
 				opacity: 0;

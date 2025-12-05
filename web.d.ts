@@ -15,6 +15,43 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    function $mol_offline(): void;
+}
+
+declare namespace $ {
+    type $mol_log3_event<Fields> = {
+        [key in string]: unknown;
+    } & {
+        time?: string;
+        place: unknown;
+        message: string;
+    } & Fields;
+    type $mol_log3_logger<Fields, Res = void> = (this: $, event: $mol_log3_event<Fields>) => Res;
+    let $mol_log3_come: $mol_log3_logger<{}>;
+    let $mol_log3_done: $mol_log3_logger<{}>;
+    let $mol_log3_fail: $mol_log3_logger<{}>;
+    let $mol_log3_warn: $mol_log3_logger<{
+        hint: string;
+    }>;
+    let $mol_log3_rise: $mol_log3_logger<{}>;
+    let $mol_log3_area: $mol_log3_logger<{}, () => void>;
+    function $mol_log3_area_lazy(this: $, event: $mol_log3_event<{}>): () => void;
+    let $mol_log3_stack: (() => void)[];
+}
+
+declare namespace $ {
+    type $mol_type_keys_extract<Input, Upper, Lower = never> = {
+        [Field in keyof Input]: unknown extends Input[Field] ? never : Input[Field] extends never ? never : Input[Field] extends Upper ? [
+            Lower
+        ] extends [Input[Field]] ? Field : never : never;
+    }[keyof Input];
+}
+
+declare namespace $ {
+    function $mol_log3_web_make(level: $mol_type_keys_extract<Console, Function>, color: string): (this: $, event: $mol_log3_event<{}>) => () => void;
+}
+
+declare namespace $ {
     var $mol_dom_context: typeof globalThis;
 }
 
@@ -23,6 +60,13 @@ declare namespace $ {
 
 declare namespace $ {
     var $mol_dom: typeof globalThis;
+}
+
+declare namespace $ {
+    function $mol_offline_web(): void;
+}
+
+declare namespace $ {
 }
 
 declare namespace $ {
@@ -534,39 +578,6 @@ declare namespace $ {
 declare namespace $ {
     let $mol_compare_deep_cache: WeakMap<any, WeakMap<any, boolean>>;
     function $mol_compare_deep<Value>(left: Value, right: Value): boolean;
-}
-
-declare namespace $ {
-    type $mol_log3_event<Fields> = {
-        [key in string]: unknown;
-    } & {
-        time?: string;
-        place: unknown;
-        message: string;
-    } & Fields;
-    type $mol_log3_logger<Fields, Res = void> = (this: $, event: $mol_log3_event<Fields>) => Res;
-    let $mol_log3_come: $mol_log3_logger<{}>;
-    let $mol_log3_done: $mol_log3_logger<{}>;
-    let $mol_log3_fail: $mol_log3_logger<{}>;
-    let $mol_log3_warn: $mol_log3_logger<{
-        hint: string;
-    }>;
-    let $mol_log3_rise: $mol_log3_logger<{}>;
-    let $mol_log3_area: $mol_log3_logger<{}, () => void>;
-    function $mol_log3_area_lazy(this: $, event: $mol_log3_event<{}>): () => void;
-    let $mol_log3_stack: (() => void)[];
-}
-
-declare namespace $ {
-    type $mol_type_keys_extract<Input, Upper, Lower = never> = {
-        [Field in keyof Input]: unknown extends Input[Field] ? never : Input[Field] extends never ? never : Input[Field] extends Upper ? [
-            Lower
-        ] extends [Input[Field]] ? Field : never : never;
-    }[keyof Input];
-}
-
-declare namespace $ {
-    function $mol_log3_web_make(level: $mol_type_keys_extract<Console, Function>, color: string): (this: $, event: $mol_log3_event<{}>) => () => void;
 }
 
 declare namespace $ {
@@ -1344,6 +1355,24 @@ declare namespace $ {
 
 //# sourceMappingURL=auto.view.tree.d.ts.map
 declare namespace $ {
+
+	export class $bog_card_particles extends $mol_view {
+		Particle1( ): $mol_view
+		Particle2( ): $mol_view
+		Particle3( ): $mol_view
+		Particle4( ): $mol_view
+		Particle5( ): $mol_view
+		Particle6( ): $mol_view
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=particles.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $ {
     function $mol_support_css_overflow_anchor(this: $): boolean;
 }
 
@@ -1771,7 +1800,7 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    let $mol_layer: Record<"float" | "focus" | "hover" | "speck" | "popup", $mol_style_func<"var", unknown>>;
+    let $mol_layer: Record<"focus" | "float" | "hover" | "speck" | "popup", $mol_style_func<"var", unknown>>;
 }
 
 declare namespace $ {
@@ -3705,47 +3734,36 @@ declare namespace $ {
 
 //# sourceMappingURL=list.view.tree.d.ts.map
 declare namespace $ {
-    function $mol_offline(): void;
-}
 
-declare namespace $ {
-    function $mol_offline_web(): void;
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
-
-	type $mol_view__sub_bog_card_1 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_text__text_bog_card_2 = $mol_type_enforce<
+	type $mol_text__text_bog_card_1 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_view__sub_bog_card_3 = $mol_type_enforce<
+	type $mol_view__sub_bog_card_2 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_text__text_bog_card_3 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
 	>
 	type $mol_text__text_bog_card_4 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_text__text_bog_card_5 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_view__sub_bog_card_6 = $mol_type_enforce<
+	type $mol_view__sub_bog_card_5 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
+	>
+	type $bog_card_tag__text_bog_card_6 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_card_tag['text'] >
 	>
 	type $bog_card_tag__text_bog_card_7 = $mol_type_enforce<
 		string
@@ -3767,55 +3785,55 @@ declare namespace $ {
 		,
 		ReturnType< $bog_card_tag['text'] >
 	>
-	type $bog_card_tag__text_bog_card_11 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_card_tag['text'] >
-	>
-	type $mol_view__sub_bog_card_12 = $mol_type_enforce<
+	type $mol_view__sub_bog_card_11 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_text__text_bog_card_13 = $mol_type_enforce<
+	type $mol_text__text_bog_card_12 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $bog_card_contact__uri_bog_card_14 = $mol_type_enforce<
+	type $bog_card_contact__uri_bog_card_13 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_card_contact['uri'] >
 	>
-	type $bog_card_contact__name_bog_card_15 = $mol_type_enforce<
+	type $bog_card_contact__name_bog_card_14 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_card_contact['name'] >
 	>
-	type $bog_card_contact__username_bog_card_16 = $mol_type_enforce<
+	type $bog_card_contact__username_bog_card_15 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_card_contact['username'] >
 	>
-	type $bog_card_contact__uri_bog_card_17 = $mol_type_enforce<
+	type $bog_card_contact__uri_bog_card_16 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_card_contact['uri'] >
 	>
-	type $bog_card_contact__name_bog_card_18 = $mol_type_enforce<
+	type $bog_card_contact__name_bog_card_17 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_card_contact['name'] >
 	>
-	type $bog_card_contact__username_bog_card_19 = $mol_type_enforce<
+	type $bog_card_contact__username_bog_card_18 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $bog_card_contact['username'] >
 	>
-	type $mol_list__rows_bog_card_20 = $mol_type_enforce<
+	type $mol_list__rows_bog_card_19 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['rows'] >
+	>
+	type $mol_text__text_bog_card_20 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
 	>
 	type $mol_text__text_bog_card_21 = $mol_type_enforce<
 		string
@@ -3827,10 +3845,10 @@ declare namespace $ {
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_text__text_bog_card_23 = $mol_type_enforce<
-		string
+	type $mol_view__sub_bog_card_23 = $mol_type_enforce<
+		readonly(any)[]
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $mol_view['sub'] >
 	>
 	type $mol_view__sub_bog_card_24 = $mol_type_enforce<
 		readonly(any)[]
@@ -3842,25 +3860,9 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_bog_card_26 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
 	export class $bog_card extends $mol_page {
 		Theme( ): $bog_theme_auto
-		Particle1( ): $mol_view
-		Particle2( ): $mol_view
-		Particle3( ): $mol_view
-		Particle4( ): $mol_view
-		Particle5( ): $mol_view
-		Particle6( ): $mol_view
-		Particle7( ): $mol_view
-		Particle8( ): $mol_view
-		Particle9( ): $mol_view
-		Particle10( ): $mol_view
-		Particle11( ): $mol_view
-		Particles( ): $mol_view
+		Particles( ): $bog_card_particles
 		Logo_text( ): $mol_text
 		Logo( ): $mol_view
 		Title( ): $mol_text
@@ -3894,11 +3896,6 @@ declare namespace $ {
 }
 
 //# sourceMappingURL=card.view.tree.d.ts.map
-declare namespace $.$$ {
-    class $bog_card extends $.$bog_card {
-    }
-}
-
 declare namespace $.$$ {
 }
 
