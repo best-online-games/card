@@ -6,19 +6,7 @@ $bog_card $mol_page
 	minimal_height 0
 	Head null
 	body /
-		<= Particles $mol_view
-			sub /
-				<= Particle1 $mol_view
-				<= Particle2 $mol_view
-				<= Particle3 $mol_view
-				<= Particle4 $mol_view
-				<= Particle5 $mol_view
-				<= Particle6 $mol_view
-				<= Particle7 $mol_view
-				<= Particle8 $mol_view
-				<= Particle9 $mol_view
-				<= Particle10 $mol_view
-				<= Particle11 $mol_view
+		<= Particles $bog_card_particles
 		<= Card $mol_view sub /
 			<= Header $mol_view
 				sub /

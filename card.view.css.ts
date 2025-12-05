@@ -15,102 +15,6 @@ namespace $.$$ {
 		padding: '1rem',
 		margin: 0,
 
-		// Particles
-		Particles: {
-			position: 'fixed',
-			inset: '0',
-			pointerEvents: 'none',
-		},
-
-		Particle1: {
-			position: 'absolute',
-			left: '10%',
-			top: '20%',
-			width: '4px',
-			height: '4px',
-			backgroundColor: '#6366f1',
-			borderRadius: '50%',
-			opacity: 0.4,
-			animationName: 'float1',
-			animationDuration: '15s',
-			animationIterationCount: 'infinite',
-		},
-
-		Particle2: {
-			position: 'absolute',
-			left: '20%',
-			top: '80%',
-			width: '4px',
-			height: '4px',
-			backgroundColor: '#8b5cf6',
-			borderRadius: '50%',
-			opacity: 0.4,
-			animationName: 'float2',
-			animationDuration: '15s',
-			animationIterationCount: 'infinite',
-			animationDelay: '-2s',
-		},
-
-		Particle3: {
-			position: 'absolute',
-			left: '60%',
-			top: '10%',
-			width: '4px',
-			height: '4px',
-			backgroundColor: '#6366f1',
-			borderRadius: '50%',
-			opacity: 0.4,
-			animationName: 'float3',
-			animationDuration: '15s',
-			animationIterationCount: 'infinite',
-			animationDelay: '-4s',
-		},
-
-		Particle4: {
-			position: 'absolute',
-			left: '80%',
-			top: '70%',
-			width: '4px',
-			height: '4px',
-			backgroundColor: '#ec4899',
-			borderRadius: '50%',
-			opacity: 0.4,
-			animationName: 'float4',
-			animationDuration: '15s',
-			animationIterationCount: 'infinite',
-			animationDelay: '-6s',
-		},
-
-		Particle5: {
-			position: 'absolute',
-			left: '40%',
-			top: '50%',
-			width: '4px',
-			height: '4px',
-			backgroundColor: '#6366f1',
-			borderRadius: '50%',
-			opacity: 0.4,
-			animationName: 'float5',
-			animationDuration: '15s',
-			animationIterationCount: 'infinite',
-			animationDelay: '-8s',
-		},
-
-		Particle6: {
-			position: 'absolute',
-			left: '90%',
-			top: '30%',
-			width: '4px',
-			height: '4px',
-			backgroundColor: '#8b5cf6',
-			borderRadius: '50%',
-			opacity: 0.4,
-			animationName: 'float6',
-			animationDuration: '15s',
-			animationIterationCount: 'infinite',
-			animationDelay: '-10s',
-		},
-
 		// Main card
 		Card: {
 			flex: {
@@ -297,36 +201,6 @@ namespace $.$$ {
 	$mol_style_attach(
 		'bog_card_animations',
 		`
-		@keyframes float1 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float2 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float3 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float4 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float5 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
-		@keyframes float6 {
-			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
-			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
-		}
-
 		@keyframes cardEntry {
 			from {
 				opacity: 0;

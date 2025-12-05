@@ -1,0 +1,7 @@
+$bog_card_particles $mol_view sub /
+	<= Particle1 $mol_view
+	<= Particle2 $mol_view
+	<= Particle3 $mol_view
+	<= Particle4 $mol_view
+	<= Particle5 $mol_view
+	<= Particle6 $mol_view
