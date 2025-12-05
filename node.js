@@ -9704,6 +9704,146 @@ var $;
 "use strict";
 
 ;
+	($.$bog_card_contact) = class $bog_card_contact extends ($.$mol_link) {
+		Contact_svg(){
+			const obj = new this.$.$bog_card_icon_telegram();
+			return obj;
+		}
+		Contact_icon(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Contact_svg())]);
+			return obj;
+		}
+		name(){
+			return "";
+		}
+		Contact_name(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.name()));
+			return obj;
+		}
+		username(){
+			return "";
+		}
+		Contact_handle(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ((this.username()));
+			return obj;
+		}
+		Contact_info(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Contact_name()), (this.Contact_handle())]);
+			return obj;
+		}
+		Contact_arrow(){
+			const obj = new this.$.$bog_card_icon_arrow();
+			return obj;
+		}
+		uri(){
+			return "";
+		}
+		sub(){
+			return [
+				(this.Contact_icon()), 
+				(this.Contact_info()), 
+				(this.Contact_arrow())
+			];
+		}
+	};
+	($mol_mem(($.$bog_card_contact.prototype), "Contact_svg"));
+	($mol_mem(($.$bog_card_contact.prototype), "Contact_icon"));
+	($mol_mem(($.$bog_card_contact.prototype), "Contact_name"));
+	($mol_mem(($.$bog_card_contact.prototype), "Contact_handle"));
+	($mol_mem(($.$bog_card_contact.prototype), "Contact_info"));
+	($mol_mem(($.$bog_card_contact.prototype), "Contact_arrow"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_card_contact, {
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            padding: {
+                top: '1rem',
+                bottom: '1rem',
+                left: '1.5rem',
+                right: '1.5rem',
+            },
+            backgroundColor: 'rgba(255, 255, 255, 0.03)',
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            borderColor: 'rgba(255, 255, 255, 0.08)',
+            borderRadius: '16px',
+            textDecoration: 'none',
+            transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+            position: 'relative',
+            overflow: 'hidden',
+            ':hover': {
+                borderColor: 'rgba(99, 102, 241, 0.4)',
+                transform: 'translateY(-4px)',
+                boxShadow: '0 20px 40px -15px rgba(99, 102, 241, 0.3)',
+            },
+            Contact_icon: {
+                position: 'relative',
+                width: '48px',
+                height: '48px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: {
+                    image: [['linear-gradient(135deg, #0088cc, #00a8e8)']],
+                },
+                borderRadius: '12px',
+                flexShrink: '0',
+            },
+            Contact_svg: {
+                width: '24px',
+                height: '24px',
+                fill: 'white',
+            },
+            Contact_info: {
+                position: 'relative',
+                alignItems: 'center',
+                flex: {
+                    grow: 1,
+                },
+            },
+            Contact_name: {
+                font: {
+                    size: '1.1rem',
+                    weight: 600,
+                },
+                color: '#f8fafc',
+            },
+            Contact_handle: {
+                font: {
+                    family: 'monospace',
+                    size: '0.85rem',
+                },
+                color: '#64748b',
+            },
+            Contact_arrow: {
+                position: 'relative',
+                width: '20px',
+                height: '20px',
+                stroke: '#64748b',
+                strokeWidth: '2',
+                fill: 'none',
+                transition: 'all 0.3s',
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$mol_text_list) = class $mol_text_list extends ($.$mol_text) {
 		type(){
 			return "";
@@ -9891,87 +10031,23 @@ var $;
 			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Contacts_title_text")));
 			return obj;
 		}
-		Contact_erik_svg(){
-			const obj = new this.$.$bog_card_icon_telegram();
-			return obj;
-		}
-		Contact_erik_icon(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Contact_erik_svg())]);
-			return obj;
-		}
-		Contact_erik_name(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Contact_erik_name_text")));
-			return obj;
-		}
-		Contact_erik_handle(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ("@ukmn9i5");
-			return obj;
-		}
-		Contact_erik_info(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Contact_erik_name()), (this.Contact_erik_handle())]);
-			return obj;
-		}
-		Contact_erik_arrow(){
-			const obj = new this.$.$bog_card_icon_arrow();
-			return obj;
-		}
 		Contact_erik(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"target": "_blank"});
+			const obj = new this.$.$bog_card_contact();
 			(obj.uri) = () => ("https://t.me/ukmn9i5");
-			(obj.sub) = () => ([
-				(this.Contact_erik_icon()), 
-				(this.Contact_erik_info()), 
-				(this.Contact_erik_arrow())
-			]);
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_card_Contact_erik_name")));
+			(obj.username) = () => ("@ukmn9i5");
 			return obj;
 		}
-		Contact_tg_svg(){
-			const obj = new this.$.$bog_card_icon_telegram();
-			return obj;
-		}
-		Contact_tg_icon(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Contact_tg_svg())]);
-			return obj;
-		}
-		Contact_tg_name(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Contact_tg_name_text")));
-			return obj;
-		}
-		Contact_tg_handle(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ("@dev_cmyser");
-			return obj;
-		}
-		Contact_tg_info(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Contact_tg_name()), (this.Contact_tg_handle())]);
-			return obj;
-		}
-		Contact_tg_arrow(){
-			const obj = new this.$.$bog_card_icon_arrow();
-			return obj;
-		}
-		Contact_tg(){
-			const obj = new this.$.$mol_link();
-			(obj.arg) = () => ({"target": "_blank"});
+		Contact_kirill(){
+			const obj = new this.$.$bog_card_contact();
 			(obj.uri) = () => ("https://t.me/dev_cmyser");
-			(obj.sub) = () => ([
-				(this.Contact_tg_icon()), 
-				(this.Contact_tg_info()), 
-				(this.Contact_tg_arrow())
-			]);
+			(obj.name) = () => ((this.$.$mol_locale.text("$bog_card_Contact_kirill_name")));
+			(obj.username) = () => ("@dev_cmyser");
 			return obj;
 		}
 		Contacts(){
 			const obj = new this.$.$mol_list();
-			(obj.rows) = () => ([(this.Contact_erik()), (this.Contact_tg())]);
+			(obj.rows) = () => ([(this.Contact_erik()), (this.Contact_kirill())]);
 			return obj;
 		}
 		Footer_text_before(){
@@ -10067,20 +10143,8 @@ var $;
 	($mol_mem(($.$bog_card.prototype), "Services"));
 	($mol_mem(($.$bog_card.prototype), "Divider"));
 	($mol_mem(($.$bog_card.prototype), "Contacts_title"));
-	($mol_mem(($.$bog_card.prototype), "Contact_erik_svg"));
-	($mol_mem(($.$bog_card.prototype), "Contact_erik_icon"));
-	($mol_mem(($.$bog_card.prototype), "Contact_erik_name"));
-	($mol_mem(($.$bog_card.prototype), "Contact_erik_handle"));
-	($mol_mem(($.$bog_card.prototype), "Contact_erik_info"));
-	($mol_mem(($.$bog_card.prototype), "Contact_erik_arrow"));
 	($mol_mem(($.$bog_card.prototype), "Contact_erik"));
-	($mol_mem(($.$bog_card.prototype), "Contact_tg_svg"));
-	($mol_mem(($.$bog_card.prototype), "Contact_tg_icon"));
-	($mol_mem(($.$bog_card.prototype), "Contact_tg_name"));
-	($mol_mem(($.$bog_card.prototype), "Contact_tg_handle"));
-	($mol_mem(($.$bog_card.prototype), "Contact_tg_info"));
-	($mol_mem(($.$bog_card.prototype), "Contact_tg_arrow"));
-	($mol_mem(($.$bog_card.prototype), "Contact_tg"));
+	($mol_mem(($.$bog_card.prototype), "Contact_kirill"));
 	($mol_mem(($.$bog_card.prototype), "Contacts"));
 	($mol_mem(($.$bog_card.prototype), "Footer_text_before"));
 	($mol_mem(($.$bog_card.prototype), "Footer_heart"));
@@ -10376,156 +10440,6 @@ var $;
                 animationDuration: '1s',
                 animationDelay: '0.4s',
                 animationFillMode: 'both',
-            },
-            Contact_erik: {
-                display: 'flex',
-                alignItems: 'center',
-                gap: '1rem',
-                padding: {
-                    top: '1rem',
-                    bottom: '1rem',
-                    left: '1.5rem',
-                    right: '1.5rem',
-                },
-                backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                borderWidth: '1px',
-                borderStyle: 'solid',
-                borderColor: 'rgba(255, 255, 255, 0.08)',
-                borderRadius: '16px',
-                textDecoration: 'none',
-                transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                position: 'relative',
-                overflow: 'hidden',
-                ':hover': {
-                    borderColor: 'rgba(99, 102, 241, 0.4)',
-                    transform: 'translateY(-4px)',
-                    boxShadow: '0 20px 40px -15px rgba(99, 102, 241, 0.3)',
-                },
-            },
-            Contact_erik_icon: {
-                position: 'relative',
-                width: '48px',
-                height: '48px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: {
-                    image: [['linear-gradient(135deg, #0088cc, #00a8e8)']],
-                },
-                borderRadius: '12px',
-                flexShrink: '0',
-            },
-            Contact_erik_svg: {
-                width: '24px',
-                height: '24px',
-                fill: 'white',
-            },
-            Contact_erik_info: {
-                position: 'relative',
-                flex: {
-                    grow: 1,
-                },
-            },
-            Contact_erik_name: {
-                font: {
-                    size: '1.1rem',
-                    weight: 600,
-                },
-                color: '#f8fafc',
-                margin: {
-                    bottom: '0.25rem',
-                },
-            },
-            Contact_erik_handle: {
-                font: {
-                    family: 'monospace',
-                    size: '0.85rem',
-                },
-                color: '#64748b',
-            },
-            Contact_erik_arrow: {
-                position: 'relative',
-                width: '20px',
-                height: '20px',
-                stroke: '#64748b',
-                strokeWidth: '2',
-                fill: 'none',
-                transition: 'all 0.3s',
-            },
-            Contact_tg: {
-                display: 'flex',
-                alignItems: 'center',
-                gap: '1rem',
-                padding: {
-                    top: '1rem',
-                    bottom: '1rem',
-                    left: '1.5rem',
-                    right: '1.5rem',
-                },
-                backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                borderWidth: '1px',
-                borderStyle: 'solid',
-                borderColor: 'rgba(255, 255, 255, 0.08)',
-                borderRadius: '16px',
-                textDecoration: 'none',
-                transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                position: 'relative',
-                overflow: 'hidden',
-                ':hover': {
-                    borderColor: 'rgba(99, 102, 241, 0.4)',
-                    transform: 'translateY(-4px)',
-                    boxShadow: '0 20px 40px -15px rgba(99, 102, 241, 0.3)',
-                },
-            },
-            Contact_tg_icon: {
-                position: 'relative',
-                width: '48px',
-                height: '48px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: {
-                    image: [['linear-gradient(135deg, #0088cc, #00a8e8)']],
-                },
-                borderRadius: '12px',
-                flexShrink: '0',
-            },
-            Contact_tg_svg: {
-                width: '24px',
-                height: '24px',
-                fill: 'white',
-            },
-            Contact_tg_info: {
-                position: 'relative',
-                flex: {
-                    grow: 1,
-                },
-            },
-            Contact_tg_name: {
-                font: {
-                    size: '1.1rem',
-                    weight: 600,
-                },
-                color: '#f8fafc',
-                margin: {
-                    bottom: '0.25rem',
-                },
-            },
-            Contact_tg_handle: {
-                font: {
-                    family: 'monospace',
-                    size: '0.85rem',
-                },
-                color: '#64748b',
-            },
-            Contact_tg_arrow: {
-                position: 'relative',
-                width: '20px',
-                height: '20px',
-                stroke: '#64748b',
-                strokeWidth: '2',
-                fill: 'none',
-                transition: 'all 0.3s',
             },
             Footer: {
                 margin: {

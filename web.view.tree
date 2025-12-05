@@ -532,6 +532,18 @@ $bog_card_icon_telegram $mol_icon path \M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 1
 
 $bog_card_icon_arrow $mol_icon path \M5 12h14M12 5l7 7-7 7
 
+$bog_card_contact $mol_link
+	uri \
+	sub /
+		<= Contact_icon $mol_view sub / <= Contact_svg $bog_card_icon_telegram
+		<= Contact_info $mol_view
+			sub /
+				<= Contact_name $mol_text
+					text <= name \
+				<= Contact_handle $mol_text
+					text <= username \
+		<= Contact_arrow $bog_card_icon_arrow
+
 $mol_text_list $mol_text
 	auto_scroll null
 	attr *
@@ -593,30 +605,14 @@ $bog_card $mol_page
 					text @ \Contact Us
 				<= Contacts $mol_list
 					rows /
-						<= Contact_erik $mol_link
-							arg * target \_blank
+						<= Contact_erik $bog_card_contact
 							uri \https://t.me/ukmn9i5
-							sub /
-								<= Contact_erik_icon $mol_view sub / <= Contact_erik_svg $bog_card_icon_telegram
-								<= Contact_erik_info $mol_view
-									sub /
-										<= Contact_erik_name $mol_text
-											text @ \Erik
-										<= Contact_erik_handle $mol_text
-											text \@ukmn9i5
-								<= Contact_erik_arrow $bog_card_icon_arrow
-						<= Contact_tg $mol_link
-							arg * target \_blank
+							name @ \Erik
+							username \@ukmn9i5
+						<= Contact_kirill $bog_card_contact
 							uri \https://t.me/dev_cmyser
-							sub /
-								<= Contact_tg_icon $mol_view sub / <= Contact_tg_svg $bog_card_icon_telegram
-								<= Contact_tg_info $mol_view
-									sub /
-										<= Contact_tg_name $mol_text
-											text @ \Kirill
-										<= Contact_tg_handle $mol_text
-											text \@dev_cmyser
-								<= Contact_tg_arrow $bog_card_icon_arrow
+							name @ \Kirill
+							username \@dev_cmyser
 				<= Footer $mol_view
 					sub /
 						<= Footer_text $mol_view

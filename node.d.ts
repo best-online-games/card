@@ -3678,6 +3678,47 @@ declare namespace $ {
 
 //# sourceMappingURL=icon.view.tree.d.ts.map
 declare namespace $ {
+
+	type $mol_view__sub_bog_card_contact_1 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_text__text_bog_card_contact_2 = $mol_type_enforce<
+		ReturnType< $bog_card_contact['name'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_text__text_bog_card_contact_3 = $mol_type_enforce<
+		ReturnType< $bog_card_contact['username'] >
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_view__sub_bog_card_contact_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $bog_card_contact extends $mol_link {
+		Contact_svg( ): $bog_card_icon_telegram
+		Contact_icon( ): $mol_view
+		name( ): string
+		Contact_name( ): $mol_text
+		username( ): string
+		Contact_handle( ): $mol_text
+		Contact_info( ): $mol_view
+		Contact_arrow( ): $bog_card_icon_arrow
+		uri( ): string
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=contact.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $ {
 }
 
 declare namespace $ {
@@ -3785,47 +3826,45 @@ declare namespace $ {
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_view__sub_bog_card_14 = $mol_type_enforce<
+	type $bog_card_contact__uri_bog_card_14 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_card_contact['uri'] >
+	>
+	type $bog_card_contact__name_bog_card_15 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_card_contact['name'] >
+	>
+	type $bog_card_contact__username_bog_card_16 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_card_contact['username'] >
+	>
+	type $bog_card_contact__uri_bog_card_17 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_card_contact['uri'] >
+	>
+	type $bog_card_contact__name_bog_card_18 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_card_contact['name'] >
+	>
+	type $bog_card_contact__username_bog_card_19 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_card_contact['username'] >
+	>
+	type $mol_list__rows_bog_card_20 = $mol_type_enforce<
 		readonly(any)[]
 		,
-		ReturnType< $mol_view['sub'] >
+		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_text__text_bog_card_15 = $mol_type_enforce<
+	type $mol_text__text_bog_card_21 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_text['text'] >
-	>
-	type $mol_text__text_bog_card_16 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_view__sub_bog_card_17 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_link__arg_bog_card_18 = $mol_type_enforce<
-		({ 
-			'target': string,
-		}) 
-		,
-		ReturnType< $mol_link['arg'] >
-	>
-	type $mol_link__uri_bog_card_19 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__sub_bog_card_20 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	type $mol_view__sub_bog_card_21 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
 	>
 	type $mol_text__text_bog_card_22 = $mol_type_enforce<
 		string
@@ -3842,54 +3881,12 @@ declare namespace $ {
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_link__arg_bog_card_25 = $mol_type_enforce<
-		({ 
-			'target': string,
-		}) 
-		,
-		ReturnType< $mol_link['arg'] >
-	>
-	type $mol_link__uri_bog_card_26 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_link['uri'] >
-	>
-	type $mol_link__sub_bog_card_27 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_link['sub'] >
-	>
-	type $mol_list__rows_bog_card_28 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_list['rows'] >
-	>
-	type $mol_text__text_bog_card_29 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_text__text_bog_card_30 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_text__text_bog_card_31 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $mol_text['text'] >
-	>
-	type $mol_view__sub_bog_card_32 = $mol_type_enforce<
+	type $mol_view__sub_bog_card_25 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_bog_card_33 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_view__sub_bog_card_34 = $mol_type_enforce<
+	type $mol_view__sub_bog_card_26 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
@@ -3923,20 +3920,8 @@ declare namespace $ {
 		Services( ): $mol_view
 		Divider( ): $mol_view
 		Contacts_title( ): $mol_text
-		Contact_erik_svg( ): $bog_card_icon_telegram
-		Contact_erik_icon( ): $mol_view
-		Contact_erik_name( ): $mol_text
-		Contact_erik_handle( ): $mol_text
-		Contact_erik_info( ): $mol_view
-		Contact_erik_arrow( ): $bog_card_icon_arrow
-		Contact_erik( ): $mol_link
-		Contact_tg_svg( ): $bog_card_icon_telegram
-		Contact_tg_icon( ): $mol_view
-		Contact_tg_name( ): $mol_text
-		Contact_tg_handle( ): $mol_text
-		Contact_tg_info( ): $mol_view
-		Contact_tg_arrow( ): $bog_card_icon_arrow
-		Contact_tg( ): $mol_link
+		Contact_erik( ): $bog_card_contact
+		Contact_kirill( ): $bog_card_contact
 		Contacts( ): $mol_list
 		Footer_text_before( ): $mol_text
 		Footer_heart( ): $mol_text
