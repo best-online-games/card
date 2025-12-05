@@ -1,0 +1,11 @@
+$bog_card_contact $mol_link
+	uri \
+	sub /
+		<= Contact_icon $mol_view sub / <= Contact_svg $bog_card_icon_telegram
+		<= Contact_info $mol_view
+			sub /
+				<= Contact_name $mol_text
+					text <= name \
+				<= Contact_handle $mol_text
+					text <= username \
+		<= Contact_arrow $bog_card_icon_arrow
