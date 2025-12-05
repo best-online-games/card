@@ -1,0 +1,7 @@
+$bog_card_header $mol_view sub /
+	<= Logo $mol_view
+		sub /
+			<= Logo_text $mol_text text \</>
+	<= Header $mol_labeler
+		title <= title \
+		content / <= subtitle \

@@ -8,16 +8,9 @@ $bog_card $mol_page
 	body /
 		<= Particles $bog_card_particles
 		<= Card $mol_view sub /
-			<= Header $mol_view
-				sub /
-					<= Logo $mol_view
-						sub /
-							<= Logo_text $mol_text
-								text \</>
-					<= Title $mol_text
-						text @ \Web Development
-					<= Subtitle $mol_text
-						text @ \Creating Digital Solutions
+			<= Header $bog_card_header
+				title @ \Web Development
+				subtitle @ \Creating Digital Solutions
 			<= Services $mol_view
 				sub /
 					<= Service_tag1 $bog_card_tag text @ \Web Applications

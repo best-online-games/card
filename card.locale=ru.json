@@ -1,7 +1,7 @@
 {
 	"$bog_card_title": "Веб-разработка",
-	"$bog_card_Title_text": "Веб-разработка",
-	"$bog_card_Subtitle_text": "Создаём цифровые решения",
+	"$bog_card_Header_title": "Веб-разработка",
+	"$bog_card_Header_subtitle": "Создаём цифровые решения",
 	"$bog_card_Service_tag1_text": "Веб-приложения",
 	"$bog_card_Service_tag2_text": "SPA / PWA",
 	"$bog_card_Service_tag3_text": "API разработка",
