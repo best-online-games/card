@@ -9888,10 +9888,6 @@ var $;
 			const obj = new this.$.$bog_theme_auto();
 			return obj;
 		}
-		Background(){
-			const obj = new this.$.$mol_view();
-			return obj;
-		}
 		Grid_overlay(){
 			const obj = new this.$.$mol_view();
 			return obj;
@@ -10108,7 +10104,6 @@ var $;
 		}
 		body(){
 			return [
-				(this.Background()), 
 				(this.Grid_overlay()), 
 				(this.Particles()), 
 				(this.Card())
@@ -10116,7 +10111,6 @@ var $;
 		}
 	};
 	($mol_mem(($.$bog_card.prototype), "Theme"));
-	($mol_mem(($.$bog_card.prototype), "Background"));
 	($mol_mem(($.$bog_card.prototype), "Grid_overlay"));
 	($mol_mem(($.$bog_card.prototype), "Particle1"));
 	($mol_mem(($.$bog_card.prototype), "Particle2"));
@@ -10213,15 +10207,6 @@ var $;
             position: 'relative',
             padding: '1rem',
             margin: 0,
-            Background: {
-                position: 'fixed',
-                inset: '0',
-                opacity: 0.5,
-                animationName: 'pulse',
-                animationDuration: '8s',
-                animationTimingFunction: 'ease-in-out',
-                animationIterationCount: 'infinite',
-            },
             Grid_overlay: {
                 position: 'fixed',
                 inset: '0',
@@ -10477,11 +10462,6 @@ var $;
             },
         });
         $mol_style_attach('bog_card_animations', `
-		@keyframes pulse {
-			0%, 100% { opacity: 1; transform: scale(1); }
-			50% { opacity: 0.8; transform: scale(1.05); }
-		}
-
 		@keyframes float1 {
 			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
 			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
