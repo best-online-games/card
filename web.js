@@ -9478,6 +9478,190 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$mol_labeler) = class $mol_labeler extends ($.$mol_list) {
+		label(){
+			return [(this.title())];
+		}
+		Label(){
+			const obj = new this.$.$mol_view();
+			(obj.minimal_height) = () => (32);
+			(obj.sub) = () => ((this.label()));
+			return obj;
+		}
+		content(){
+			return [];
+		}
+		Content(){
+			const obj = new this.$.$mol_view();
+			(obj.minimal_height) = () => (24);
+			(obj.sub) = () => ((this.content()));
+			return obj;
+		}
+		rows(){
+			return [(this.Label()), (this.Content())];
+		}
+	};
+	($mol_mem(($.$mol_labeler.prototype), "Label"));
+	($mol_mem(($.$mol_labeler.prototype), "Content"));
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/labeler/labeler.view.css", "[mol_labeler] {\n\tdisplay: flex;\n\tflex-direction: column;\n\talign-items: stretch;\n\tcursor: inherit;\n}\n\n[mol_labeler_label] {\n\tmin-height: 2rem;\n\tcolor: var(--mol_theme_shade);\n\tpadding: .5rem .75rem 0;\n\tgap: 0 var(--mol_gap_block);\n\tflex-wrap: wrap;\n}\n\n[mol_labeler_content] {\n\tdisplay: flex;\n\tpadding: var(--mol_gap_text);\n\tmin-height: 2.5rem;\n}\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+	($.$bog_card_header) = class $bog_card_header extends ($.$mol_view) {
+		Logo_text(){
+			const obj = new this.$.$mol_text();
+			(obj.text) = () => ("</>");
+			return obj;
+		}
+		Logo(){
+			const obj = new this.$.$mol_view();
+			(obj.sub) = () => ([(this.Logo_text())]);
+			return obj;
+		}
+		title(){
+			return "";
+		}
+		subtitle(){
+			return "";
+		}
+		Header(){
+			const obj = new this.$.$mol_labeler();
+			(obj.title) = () => ((this.title()));
+			(obj.content) = () => ([(this.subtitle())]);
+			return obj;
+		}
+		sub(){
+			return [(this.Logo()), (this.Header())];
+		}
+	};
+	($mol_mem(($.$bog_card_header.prototype), "Logo_text"));
+	($mol_mem(($.$bog_card_header.prototype), "Logo"));
+	($mol_mem(($.$bog_card_header.prototype), "Header"));
+
+
+;
+	($.$mol_text_list) = class $mol_text_list extends ($.$mol_text) {
+		type(){
+			return "";
+		}
+		auto_scroll(){
+			return null;
+		}
+		attr(){
+			return {...(super.attr()), "mol_text_list_type": (this.type())};
+		}
+		Paragraph(id){
+			const obj = new this.$.$mol_text_list_item();
+			(obj.index) = () => ((this.item_index(id)));
+			(obj.sub) = () => ((this.block_content(id)));
+			return obj;
+		}
+	};
+	($mol_mem_key(($.$mol_text_list.prototype), "Paragraph"));
+	($.$mol_text_list_item) = class $mol_text_list_item extends ($.$mol_paragraph) {
+		index(){
+			return 0;
+		}
+		attr(){
+			return {...(super.attr()), "mol_text_list_item_index": (this.index())};
+		}
+	};
+
+
+;
+"use strict";
+var $;
+(function ($) {
+    $mol_style_attach("mol/text/list/list.view.css", "[mol_text_list] {\r\n\tpadding-left: 1.75rem;\r\n}\r\n\r\n[mol_text_list_item] {\r\n\tcontain: none;\r\n\tdisplay: list-item;\r\n}\r\n\r\n[mol_text_list_item]::before {\r\n\tcontent: attr( mol_text_list_item_index ) \".\";\r\n\twidth: 1.25rem;\r\n\tdisplay: inline-block;\r\n\tposition: absolute;\r\n\tmargin-left: -1.75rem;\r\n\ttext-align: end;\r\n}\r\n\r\n[mol_text_list_type=\"-\"] > [mol_text_list_item]::before,\r\n[mol_text_list_type=\"*\"] > [mol_text_list_item]::before {\r\n\tcontent: \"•\";\r\n}\r\n");
+})($ || ($ = {}));
+
+;
+"use strict";
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_card_header, {
+            flex: {
+                direction: 'column',
+            },
+            textAlign: 'center',
+            margin: {
+                bottom: '2.5rem',
+            },
+            Logo: {
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '80px',
+                height: '80px',
+                margin: {
+                    bottom: '1.5rem',
+                    left: 'auto',
+                    right: 'auto',
+                },
+                background: {
+                    image: [['linear-gradient(135deg, #6366f1, #8b5cf6)']],
+                },
+                borderRadius: '20px',
+                boxShadow: '0 20px 40px -10px rgba(99, 102, 241, 0.4)',
+                animationName: 'logoFloat',
+                animationDuration: '4s',
+                animationTimingFunction: 'ease-in-out',
+                animationIterationCount: 'infinite',
+            },
+            Logo_text: {
+                font: {
+                    family: 'monospace',
+                    size: '2rem',
+                    weight: 700,
+                },
+                color: 'white',
+            },
+            Header: {
+                alignItems: 'center',
+                Label: {
+                    font: {
+                        size: '2rem',
+                        weight: 700,
+                    },
+                    color: '#f8fafc',
+                    margin: {
+                        bottom: '0.5rem',
+                    },
+                    letterSpacing: '-0.02em',
+                },
+                Content: {
+                    font: {
+                        family: 'monospace',
+                        size: '0.85rem',
+                    },
+                    paddingTop: '2rem',
+                    color: '#64748b',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.15em',
+                },
+            },
+        });
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$bog_card_tag) = class $bog_card_tag extends ($.$mol_text) {};
 
 
@@ -9684,33 +9868,10 @@ var $;
 			const obj = new this.$.$bog_card_particles();
 			return obj;
 		}
-		Logo_text(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ("</>");
-			return obj;
-		}
-		Logo(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Logo_text())]);
-			return obj;
-		}
-		Title(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Title_text")));
-			return obj;
-		}
-		Subtitle(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Subtitle_text")));
-			return obj;
-		}
 		Header(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([
-				(this.Logo()), 
-				(this.Title()), 
-				(this.Subtitle())
-			]);
+			const obj = new this.$.$bog_card_header();
+			(obj.title) = () => ((this.$.$mol_locale.text("$bog_card_Header_title")));
+			(obj.subtitle) = () => ((this.$.$mol_locale.text("$bog_card_Header_subtitle")));
 			return obj;
 		}
 		Service_tag1(){
@@ -9839,10 +10000,6 @@ var $;
 	};
 	($mol_mem(($.$bog_card.prototype), "Theme"));
 	($mol_mem(($.$bog_card.prototype), "Particles"));
-	($mol_mem(($.$bog_card.prototype), "Logo_text"));
-	($mol_mem(($.$bog_card.prototype), "Logo"));
-	($mol_mem(($.$bog_card.prototype), "Title"));
-	($mol_mem(($.$bog_card.prototype), "Subtitle"));
 	($mol_mem(($.$bog_card.prototype), "Header"));
 	($mol_mem(($.$bog_card.prototype), "Service_tag1"));
 	($mol_mem(($.$bog_card.prototype), "Service_tag2"));
@@ -9862,45 +10019,6 @@ var $;
 	($mol_mem(($.$bog_card.prototype), "Footer"));
 	($mol_mem(($.$bog_card.prototype), "Card"));
 
-
-;
-	($.$mol_text_list) = class $mol_text_list extends ($.$mol_text) {
-		type(){
-			return "";
-		}
-		auto_scroll(){
-			return null;
-		}
-		attr(){
-			return {...(super.attr()), "mol_text_list_type": (this.type())};
-		}
-		Paragraph(id){
-			const obj = new this.$.$mol_text_list_item();
-			(obj.index) = () => ((this.item_index(id)));
-			(obj.sub) = () => ((this.block_content(id)));
-			return obj;
-		}
-	};
-	($mol_mem_key(($.$mol_text_list.prototype), "Paragraph"));
-	($.$mol_text_list_item) = class $mol_text_list_item extends ($.$mol_paragraph) {
-		index(){
-			return 0;
-		}
-		attr(){
-			return {...(super.attr()), "mol_text_list_item_index": (this.index())};
-		}
-	};
-
-
-;
-"use strict";
-var $;
-(function ($) {
-    $mol_style_attach("mol/text/list/list.view.css", "[mol_text_list] {\r\n\tpadding-left: 1.75rem;\r\n}\r\n\r\n[mol_text_list_item] {\r\n\tcontain: none;\r\n\tdisplay: list-item;\r\n}\r\n\r\n[mol_text_list_item]::before {\r\n\tcontent: attr( mol_text_list_item_index ) \".\";\r\n\twidth: 1.25rem;\r\n\tdisplay: inline-block;\r\n\tposition: absolute;\r\n\tmargin-left: -1.75rem;\r\n\ttext-align: end;\r\n}\r\n\r\n[mol_text_list_type=\"-\"] > [mol_text_list_item]::before,\r\n[mol_text_list_type=\"*\"] > [mol_text_list_item]::before {\r\n\tcontent: \"•\";\r\n}\r\n");
-})($ || ($ = {}));
-
-;
-"use strict";
 
 ;
 var $node = $node || {} ; $node[ "/bog/card/favicon.svg" ] = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CiAgPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iNiIgZmlsbD0iIzYzNjZmMSIvPgogIDxwYXRoIGQ9Ik04IDZMNSAxMkw4IDE4TTE2IDZMMTkgMTJMMTYgMThNMTQgNEwxMCAyMCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg=="
@@ -9951,64 +10069,6 @@ var $;
                 animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                 boxShadow: '0 0 0 1px rgba(99, 102, 241, 0.15)',
                 zIndex: 10,
-            },
-            Header: {
-                flex: {
-                    direction: 'column',
-                },
-                textAlign: 'center',
-                margin: {
-                    bottom: '2.5rem',
-                },
-            },
-            Logo: {
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '80px',
-                height: '80px',
-                margin: {
-                    bottom: '1.5rem',
-                    left: 'auto',
-                    right: 'auto',
-                },
-                background: {
-                    image: [['linear-gradient(135deg, #6366f1, #8b5cf6)']],
-                },
-                borderRadius: '20px',
-                boxShadow: '0 20px 40px -10px rgba(99, 102, 241, 0.4)',
-                animationName: 'logoFloat',
-                animationDuration: '4s',
-                animationTimingFunction: 'ease-in-out',
-                animationIterationCount: 'infinite',
-            },
-            Logo_text: {
-                font: {
-                    family: 'monospace',
-                    size: '2rem',
-                    weight: 700,
-                },
-                color: 'white',
-            },
-            Title: {
-                font: {
-                    size: '2rem',
-                    weight: 700,
-                },
-                color: '#f8fafc',
-                margin: {
-                    bottom: '0.5rem',
-                },
-                letterSpacing: '-0.02em',
-            },
-            Subtitle: {
-                font: {
-                    family: 'monospace',
-                    size: '0.85rem',
-                },
-                color: '#64748b',
-                textTransform: 'uppercase',
-                letterSpacing: '0.15em',
             },
             Services: {
                 display: 'flex',

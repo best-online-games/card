@@ -3679,6 +3679,113 @@ declare namespace $ {
 }
 
 declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_view__minimal_height_mol_labeler_1 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_view['minimal_height'] >
+	>
+	type $mol_view__sub_mol_labeler_2 = $mol_type_enforce<
+		ReturnType< $mol_labeler['label'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_view__minimal_height_mol_labeler_3 = $mol_type_enforce<
+		number
+		,
+		ReturnType< $mol_view['minimal_height'] >
+	>
+	type $mol_view__sub_mol_labeler_4 = $mol_type_enforce<
+		ReturnType< $mol_labeler['content'] >
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	export class $mol_labeler extends $mol_list {
+		label( ): readonly($mol_view_content)[]
+		Label( ): $mol_view
+		content( ): readonly(any)[]
+		Content( ): $mol_view
+		rows( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=labeler.view.tree.d.ts.map
+declare namespace $ {
+}
+
+declare namespace $ {
+
+	type $mol_text_list_item__index_mol_text_list_1 = $mol_type_enforce<
+		ReturnType< $mol_text_list['item_index'] >
+		,
+		ReturnType< $mol_text_list_item['index'] >
+	>
+	type $mol_text_list_item__sub_mol_text_list_2 = $mol_type_enforce<
+		ReturnType< $mol_text_list['block_content'] >
+		,
+		ReturnType< $mol_text_list_item['sub'] >
+	>
+	export class $mol_text_list extends $mol_text {
+		type( ): string
+		auto_scroll( ): any
+		attr( ): ({ 
+			'mol_text_list_type': ReturnType< $mol_text_list['type'] >,
+		})  & ReturnType< $mol_text['attr'] >
+		Paragraph( id: any): $mol_text_list_item
+	}
+	
+	export class $mol_text_list_item extends $mol_paragraph {
+		index( ): number
+		attr( ): ({ 
+			'mol_text_list_item_index': ReturnType< $mol_text_list_item['index'] >,
+		})  & ReturnType< $mol_paragraph['attr'] >
+	}
+	
+}
+
+//# sourceMappingURL=list.view.tree.d.ts.map
+declare namespace $ {
+
+	type $mol_text__text_bog_card_header_1 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $mol_text['text'] >
+	>
+	type $mol_view__sub_bog_card_header_2 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_view['sub'] >
+	>
+	type $mol_labeler__title_bog_card_header_3 = $mol_type_enforce<
+		ReturnType< $bog_card_header['title'] >
+		,
+		ReturnType< $mol_labeler['title'] >
+	>
+	type $mol_labeler__content_bog_card_header_4 = $mol_type_enforce<
+		readonly(any)[]
+		,
+		ReturnType< $mol_labeler['content'] >
+	>
+	export class $bog_card_header extends $mol_view {
+		Logo_text( ): $mol_text
+		Logo( ): $mol_view
+		title( ): string
+		subtitle( ): string
+		Header( ): $mol_labeler
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=header.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $ {
 
 	export class $bog_card_tag extends $mol_text {
 	}
@@ -3744,65 +3851,31 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-}
 
-declare namespace $ {
-
-	type $mol_text_list_item__index_mol_text_list_1 = $mol_type_enforce<
-		ReturnType< $mol_text_list['item_index'] >
-		,
-		ReturnType< $mol_text_list_item['index'] >
-	>
-	type $mol_text_list_item__sub_mol_text_list_2 = $mol_type_enforce<
-		ReturnType< $mol_text_list['block_content'] >
-		,
-		ReturnType< $mol_text_list_item['sub'] >
-	>
-	export class $mol_text_list extends $mol_text {
-		type( ): string
-		auto_scroll( ): any
-		attr( ): ({ 
-			'mol_text_list_type': ReturnType< $mol_text_list['type'] >,
-		})  & ReturnType< $mol_text['attr'] >
-		Paragraph( id: any): $mol_text_list_item
-	}
-	
-	export class $mol_text_list_item extends $mol_paragraph {
-		index( ): number
-		attr( ): ({ 
-			'mol_text_list_item_index': ReturnType< $mol_text_list_item['index'] >,
-		})  & ReturnType< $mol_paragraph['attr'] >
-	}
-	
-}
-
-//# sourceMappingURL=list.view.tree.d.ts.map
-declare namespace $ {
-
-	type $mol_text__text_bog_card_1 = $mol_type_enforce<
+	type $bog_card_header__title_bog_card_1 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $bog_card_header['title'] >
 	>
-	type $mol_view__sub_bog_card_2 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_text__text_bog_card_3 = $mol_type_enforce<
+	type $bog_card_header__subtitle_bog_card_2 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $bog_card_header['subtitle'] >
 	>
-	type $mol_text__text_bog_card_4 = $mol_type_enforce<
+	type $bog_card_tag__text_bog_card_3 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $bog_card_tag['text'] >
 	>
-	type $mol_view__sub_bog_card_5 = $mol_type_enforce<
-		readonly(any)[]
+	type $bog_card_tag__text_bog_card_4 = $mol_type_enforce<
+		string
 		,
-		ReturnType< $mol_view['sub'] >
+		ReturnType< $bog_card_tag['text'] >
+	>
+	type $bog_card_tag__text_bog_card_5 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_card_tag['text'] >
 	>
 	type $bog_card_tag__text_bog_card_6 = $mol_type_enforce<
 		string
@@ -3814,30 +3887,30 @@ declare namespace $ {
 		,
 		ReturnType< $bog_card_tag['text'] >
 	>
-	type $bog_card_tag__text_bog_card_8 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_card_tag['text'] >
-	>
-	type $bog_card_tag__text_bog_card_9 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_card_tag['text'] >
-	>
-	type $bog_card_tag__text_bog_card_10 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_card_tag['text'] >
-	>
-	type $mol_view__sub_bog_card_11 = $mol_type_enforce<
+	type $mol_view__sub_bog_card_8 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_text__text_bog_card_12 = $mol_type_enforce<
+	type $mol_text__text_bog_card_9 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_text['text'] >
+	>
+	type $bog_card_contact__uri_bog_card_10 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_card_contact['uri'] >
+	>
+	type $bog_card_contact__name_bog_card_11 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_card_contact['name'] >
+	>
+	type $bog_card_contact__username_bog_card_12 = $mol_type_enforce<
+		string
+		,
+		ReturnType< $bog_card_contact['username'] >
 	>
 	type $bog_card_contact__uri_bog_card_13 = $mol_type_enforce<
 		string
@@ -3854,52 +3927,37 @@ declare namespace $ {
 		,
 		ReturnType< $bog_card_contact['username'] >
 	>
-	type $bog_card_contact__uri_bog_card_16 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_card_contact['uri'] >
-	>
-	type $bog_card_contact__name_bog_card_17 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_card_contact['name'] >
-	>
-	type $bog_card_contact__username_bog_card_18 = $mol_type_enforce<
-		string
-		,
-		ReturnType< $bog_card_contact['username'] >
-	>
-	type $mol_list__rows_bog_card_19 = $mol_type_enforce<
+	type $mol_list__rows_bog_card_16 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_text__text_bog_card_20 = $mol_type_enforce<
+	type $mol_text__text_bog_card_17 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_text__text_bog_card_21 = $mol_type_enforce<
+	type $mol_text__text_bog_card_18 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_text__text_bog_card_22 = $mol_type_enforce<
+	type $mol_text__text_bog_card_19 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_text['text'] >
 	>
-	type $mol_view__sub_bog_card_23 = $mol_type_enforce<
+	type $mol_view__sub_bog_card_20 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_bog_card_24 = $mol_type_enforce<
+	type $mol_view__sub_bog_card_21 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub_bog_card_25 = $mol_type_enforce<
+	type $mol_view__sub_bog_card_22 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
@@ -3907,11 +3965,7 @@ declare namespace $ {
 	export class $bog_card extends $mol_page {
 		Theme( ): $bog_theme_auto
 		Particles( ): $bog_card_particles
-		Logo_text( ): $mol_text
-		Logo( ): $mol_view
-		Title( ): $mol_text
-		Subtitle( ): $mol_text
-		Header( ): $mol_view
+		Header( ): $bog_card_header
 		Service_tag1( ): $bog_card_tag
 		Service_tag2( ): $bog_card_tag
 		Service_tag3( ): $bog_card_tag
