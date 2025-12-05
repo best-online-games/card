@@ -15,17 +15,6 @@ namespace $.$$ {
 		padding: '1rem',
 		margin: 0,
 
-		// Animated background gradient
-		Background: {
-			position: 'fixed',
-			inset: '0',
-			opacity: 0.5,
-			animationName: 'pulse',
-			animationDuration: '8s',
-			animationTimingFunction: 'ease-in-out',
-			animationIterationCount: 'infinite',
-		},
-
 		// Grid overlay
 		Grid_overlay: {
 			position: 'fixed',
@@ -315,11 +304,6 @@ namespace $.$$ {
 	$mol_style_attach(
 		'bog_card_animations',
 		`
-		@keyframes pulse {
-			0%, 100% { opacity: 1; transform: scale(1); }
-			50% { opacity: 0.8; transform: scale(1.05); }
-		}
-
 		@keyframes float1 {
 			0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
 			50% { transform: translateY(-30px) scale(1.5); opacity: 0.7; }
