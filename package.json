@@ -216,7 +216,8 @@
     "$mol_labeler",
     "$bog_card_tag",
     "$bog_card_contact",
-    "$bog_card_icon"
+    "$bog_card_icon",
+    "$bog_card_footer"
   ],
   "dependencies": {
     "internal": "*",

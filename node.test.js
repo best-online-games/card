@@ -10156,6 +10156,90 @@ var $;
 })($ || ($ = {}));
 
 ;
+	($.$bog_card_footer) = class $bog_card_footer extends ($.$mol_view) {
+		start(){
+			return "";
+		}
+		Start(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.start()));
+			return obj;
+		}
+		center(){
+			return "";
+		}
+		Center(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.center()));
+			return obj;
+		}
+		end(){
+			return "";
+		}
+		End(){
+			const obj = new this.$.$mol_paragraph();
+			(obj.title) = () => ((this.end()));
+			return obj;
+		}
+		sub(){
+			return [
+				(this.Start()), 
+				(this.Center()), 
+				(this.End())
+			];
+		}
+	};
+	($mol_mem(($.$bog_card_footer.prototype), "Start"));
+	($mol_mem(($.$bog_card_footer.prototype), "Center"));
+	($mol_mem(($.$bog_card_footer.prototype), "End"));
+
+
+;
+"use strict";
+
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        $mol_style_define($bog_card_footer, {
+            font: {
+                family: 'monospace',
+                size: '0.75rem',
+            },
+            margin: {
+                top: '2rem',
+            },
+            color: '#64748b',
+            letterSpacing: '0.1em',
+            textAlign: 'center',
+            animationName: 'fadeInUp',
+            animationDuration: '1s',
+            animationDelay: '0.6s',
+            animationFillMode: 'both',
+            justifyContent: 'center',
+            gap: '1.5rem',
+            Center: {
+                color: '#ec4899',
+            },
+        });
+        $mol_style_attach('bog_card_footer_animations', `
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	`);
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+
+;
 	($.$bog_card) = class $bog_card extends ($.$mol_page) {
 		Theme(){
 			const obj = new this.$.$bog_theme_auto();
@@ -10235,33 +10319,11 @@ var $;
 			(obj.rows) = () => ([(this.Contact_erik()), (this.Contact_kirill())]);
 			return obj;
 		}
-		Footer_text_before(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Footer_text_before_text")));
-			return obj;
-		}
-		Footer_heart(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ("♥");
-			return obj;
-		}
-		Footer_text_after(){
-			const obj = new this.$.$mol_text();
-			(obj.text) = () => ((this.$.$mol_locale.text("$bog_card_Footer_text_after_text")));
-			return obj;
-		}
-		Footer_text(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([
-				(this.Footer_text_before()), 
-				(this.Footer_heart()), 
-				(this.Footer_text_after())
-			]);
-			return obj;
-		}
 		Footer(){
-			const obj = new this.$.$mol_view();
-			(obj.sub) = () => ([(this.Footer_text())]);
+			const obj = new this.$.$bog_card_footer();
+			(obj.start) = () => ((this.$.$mol_locale.text("$bog_card_Footer_start")));
+			(obj.center) = () => ((this.$.$mol_locale.text("$bog_card_Footer_center")));
+			(obj.end) = () => ((this.$.$mol_locale.text("$bog_card_Footer_end")));
 			return obj;
 		}
 		Card(){
@@ -10309,10 +10371,6 @@ var $;
 	($mol_mem(($.$bog_card.prototype), "Contact_erik"));
 	($mol_mem(($.$bog_card.prototype), "Contact_kirill"));
 	($mol_mem(($.$bog_card.prototype), "Contacts"));
-	($mol_mem(($.$bog_card.prototype), "Footer_text_before"));
-	($mol_mem(($.$bog_card.prototype), "Footer_heart"));
-	($mol_mem(($.$bog_card.prototype), "Footer_text_after"));
-	($mol_mem(($.$bog_card.prototype), "Footer_text"));
 	($mol_mem(($.$bog_card.prototype), "Footer"));
 	($mol_mem(($.$bog_card.prototype), "Card"));
 
@@ -10411,40 +10469,6 @@ var $;
                 animationDuration: '1s',
                 animationDelay: '0.4s',
                 animationFillMode: 'both',
-            },
-            Footer: {
-                margin: {
-                    top: '2rem',
-                },
-                textAlign: 'center',
-                animationName: 'fadeInUp',
-                animationDuration: '1s',
-                animationDelay: '0.6s',
-                animationFillMode: 'both',
-                justifyContent: 'center',
-            },
-            Footer_text: {
-                font: {
-                    family: 'monospace',
-                    size: '0.75rem',
-                },
-                color: '#64748b',
-                letterSpacing: '0.1em',
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: '0.25rem',
-            },
-            Footer_text_before: {
-                display: 'inline',
-            },
-            Footer_heart: {
-                color: '#ec4899',
-                display: 'inline',
-            },
-            Footer_text_after: {
-                display: 'inline',
             },
         });
         $mol_style_attach('bog_card_animations', `

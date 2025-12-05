@@ -582,6 +582,11 @@ $bog_card_contact $mol_link
 				<= Contact_handle $mol_text text <= username \
 		<= Contact_arrow $bog_card_icon_arrow
 
+$bog_card_footer $mol_view sub /
+	<= Start $mol_paragraph title <= start \
+	<= Center $mol_paragraph title <= center \
+	<= End $mol_paragraph title <= end \
+
 $bog_card $mol_page
 	title @ \Web-development
 	plugins /
@@ -614,10 +619,7 @@ $bog_card $mol_page
 						uri \https://t.me/dev_cmyser
 						name @ \Kirill
 						username \@dev_cmyser
-			<= Footer $mol_view
-				sub /
-					<= Footer_text $mol_view
-						sub /
-							<= Footer_text_before $mol_text text @ \Code with
-							<= Footer_heart $mol_text text \♥
-							<= Footer_text_after $mol_text text @ \ and coffee
+			<= Footer $bog_card_footer
+				start @ \Code with
+				center @ \♥
+				end @ \and coffee

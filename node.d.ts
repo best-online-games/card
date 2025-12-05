@@ -3852,6 +3852,39 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
+	type $mol_paragraph__title_bog_card_footer_1 = $mol_type_enforce<
+		ReturnType< $bog_card_footer['start'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_bog_card_footer_2 = $mol_type_enforce<
+		ReturnType< $bog_card_footer['center'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	type $mol_paragraph__title_bog_card_footer_3 = $mol_type_enforce<
+		ReturnType< $bog_card_footer['end'] >
+		,
+		ReturnType< $mol_paragraph['title'] >
+	>
+	export class $bog_card_footer extends $mol_view {
+		start( ): string
+		Start( ): $mol_paragraph
+		center( ): string
+		Center( ): $mol_paragraph
+		end( ): string
+		End( ): $mol_paragraph
+		sub( ): readonly(any)[]
+	}
+	
+}
+
+//# sourceMappingURL=footer.view.tree.d.ts.map
+declare namespace $.$$ {
+}
+
+declare namespace $ {
+
 	type $bog_card_header__title_bog_card_1 = $mol_type_enforce<
 		string
 		,
@@ -3932,32 +3965,22 @@ declare namespace $ {
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_text__text_bog_card_17 = $mol_type_enforce<
+	type $bog_card_footer__start_bog_card_17 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $bog_card_footer['start'] >
 	>
-	type $mol_text__text_bog_card_18 = $mol_type_enforce<
+	type $bog_card_footer__center_bog_card_18 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $bog_card_footer['center'] >
 	>
-	type $mol_text__text_bog_card_19 = $mol_type_enforce<
+	type $bog_card_footer__end_bog_card_19 = $mol_type_enforce<
 		string
 		,
-		ReturnType< $mol_text['text'] >
+		ReturnType< $bog_card_footer['end'] >
 	>
 	type $mol_view__sub_bog_card_20 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_view__sub_bog_card_21 = $mol_type_enforce<
-		readonly(any)[]
-		,
-		ReturnType< $mol_view['sub'] >
-	>
-	type $mol_view__sub_bog_card_22 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
@@ -3977,11 +4000,7 @@ declare namespace $ {
 		Contact_erik( ): $bog_card_contact
 		Contact_kirill( ): $bog_card_contact
 		Contacts( ): $mol_list
-		Footer_text_before( ): $mol_text
-		Footer_heart( ): $mol_text
-		Footer_text_after( ): $mol_text
-		Footer_text( ): $mol_view
-		Footer( ): $mol_view
+		Footer( ): $bog_card_footer
 		Card( ): $mol_view
 		title( ): string
 		plugins( ): readonly(any)[]
