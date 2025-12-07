@@ -220,7 +220,6 @@
     "$bog_card_footer"
   ],
   "dependencies": {
-    "internal": "*",
     "jsdom": "*"
   }
 }
